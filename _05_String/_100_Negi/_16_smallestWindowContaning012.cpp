@@ -15,7 +15,7 @@ int smallestSubstring(string s) {
     if(arr[i]==0) return -1;
   }
   
-  int ans=INT_MAX;
+  int ans=n;
   unordered_map<char,int> mp;
   for(int i=0;i<n;i++){
     mp[s[i]]=i;

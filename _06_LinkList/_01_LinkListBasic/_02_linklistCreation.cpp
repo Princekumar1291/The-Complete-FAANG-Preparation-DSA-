@@ -7,20 +7,20 @@ public:
 };
 int main(){
     //10 20 30 40
-    Node a;
-    a.val=10;
-    Node b;
-    b.val=20;
-    Node c;
-    c.val=30;
-    Node d;
-    d.val=40;
+    // Node a;
+    // a.val=10;
+    // Node b;
+    // b.val=20;
+    // Node c;
+    // c.val=30;
+    // Node d;
+    // d.val=40;
 
     //forming linklist
-    a.next=&b;
-    b.next=&c;
-    c.next=&d;
-    d.next=NULL;
+    // a.next=&b;
+    // b.next=&c;
+    // c.next=&d;
+    // d.next=NULL;
     return 0;
 }
 

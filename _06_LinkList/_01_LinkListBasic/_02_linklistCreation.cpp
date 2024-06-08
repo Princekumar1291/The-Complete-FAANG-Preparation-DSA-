@@ -1,30 +1,28 @@
-#include<bits/stdc++.h>
-using namespace std;
-class Node{
-public:
-    int val;
-    Node* next;
-};
-int main(){
-    //10 20 30 40
-    // Node a;
-    // a.val=10;
-    // Node b;
-    // b.val=20;
-    // Node c;
-    // c.val=30;
-    // Node d;
-    // d.val=40;
+// #include<bits/stdc++.h>
+// using namespace std;
+// class Node{
+// public:
+//     int val;
+//     Node* next;
+// };
+// int main(){
+//     //10 20 30 40
+//     // Node a;
+//     // a.val=10;
+//     // Node b;
+//     // b.val=20;
+//     // Node c;
+//     // c.val=30;
+//     // Node d;
+//     // d.val=40;
 
-    //forming linklist
-    // a.next=&b;
-    // b.next=&c;
-    // c.next=&d;
-    // d.next=NULL;
-    return 0;
-}
-
-
+//     //forming linklist
+//     // a.next=&b;
+//     // b.next=&c;
+//     // c.next=&d;
+//     // d.next=NULL;
+//     return 0;
+// }
 
 
 
@@ -39,45 +37,45 @@ int main(){
 
 
 
-#include<bits/stdc++.h>
-using namespace std;
-class Node{  //linklist ka node
-public:
-    int val;
-    Node* next;
-    Node(int val){  //constructor
-        this->val=val;
-        this->next=NULL;
-    }
-};
-int main(){
-    //10 20 30 40
-    Node a(10);
-    Node b(20);
-    Node c(30);
-    Node d(40);
+
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// class Node{  //linklist ka node
+// public:
+//     int val;
+//     Node* next;
+//     Node(int val){  //constructor
+//         this->val=val;
+//         this->next=NULL;
+//     }
+// };
+// int main(){
+//     //10 20 30 40
+//     Node a(10);
+//     Node b(20);
+//     Node c(30);
+//     Node d(40);
     
-    //forming linklist
-    a.next=&b;
-    b.next=&c;
-    c.next=&d;
+//     //forming linklist
+//     a.next=&b;
+//     b.next=&c;
+//     c.next=&d;
 
-    // cout<<(*(a.next)).val<<endl; //OR
-    // cout<<a.next->val<<endl;      
+//     // cout<<(*(a.next)).val<<endl; //OR
+//     // cout<<a.next->val<<endl;      
 
-    //Modifying data
-    // a.next->val=80;
-    // cout<<a.next->val<<endl;
+//     //Modifying data
+//     // a.next->val=80;
+//     // cout<<a.next->val<<endl;
 
-    //accessing c,d by a.
+//     //accessing c,d by a.
 
-    //(((a.next)->)->next).val;
-    // cout<<((a.next)->next)->val<<endl;
-    // cout<<(((a.next)->next)->next)->val;
-    return 0;
-}
-
-
+//     //(((a.next)->)->next).val;
+//     // cout<<((a.next)->next)->val<<endl;
+//     // cout<<(((a.next)->next)->next)->val;
+//     return 0;
+// }
 
 
 
@@ -89,38 +87,40 @@ int main(){
 
 
 
-#include<bits/stdc++.h>
-using namespace std;
-class Node{  //linklist ka node
-public:
-    int val;
-    Node* next;
-    Node(int val){
-        this->val=val;
-        this->next=NULL;
-    }
-};
-int main(){
-    Node* a=new Node(10);
-    Node* b=new Node(20);
-    Node* c=new Node(30);
-    Node* d=new Node(40);
 
-    a->next=b;
-    b->next=c;
-    c->next=d;
 
-    Node* temp=a;
-    while (temp!=NULL)
-    {
-        cout<<temp->val<<" ";
-        temp=temp->next;
-    }
+// #include<bits/stdc++.h>
+// using namespace std;
+// class Node{  //linklist ka node
+// public:
+//     int val;
+//     Node* next;
+//     Node(int val){
+//         this->val=val;
+//         this->next=NULL;
+//     }
+// };
+// int main(){
+//     Node* a=new Node(10);
+//     Node* b=new Node(20);
+//     Node* c=new Node(30);
+//     Node* d=new Node(40);
+
+//     a->next=b;
+//     b->next=c;
+//     c->next=d;
+
+//     Node* temp=a;
+//     while (temp!=NULL)
+//     {
+//         cout<<temp->val<<" ";
+//         temp=temp->next;
+//     }
     
-    // cout<<endl;
-    // cout<<a->next->next->next->val<<endl;
-    return 0;
-}
+//     // cout<<endl;
+//     // cout<<a->next->next->next->val<<endl;
+//     return 0;
+// }
 
 
 
@@ -139,40 +139,38 @@ int main(){
 
 
 
-#include<bits/stdc++.h>
-using namespace std;
-class Node{  //linklist ka node
-public:
-    int val;
-    Node* next;
-    Node(int val){
-        this->val=val;
-        this->next=NULL;
-    }
-};
+// #include<bits/stdc++.h>
+// using namespace std;
+// class Node{  //linklist ka node
+// public:
+//     int val;
+//     Node* next;
+//     Node(int val){
+//         this->val=val;
+//         this->next=NULL;
+//     }
+// };
 
-void display(Node* head){
-    Node* temp=head;
-    while(temp!=NULL){
-        cout<<temp->val<<" ";
-        temp=temp->next;
-    }
-}
-int main(){
-    Node* a=new Node(10);
-    Node* b=new Node(20);
-    Node* c=new Node(30);
-    Node* d=new Node(40);
+// void display(Node* head){
+//     Node* temp=head;
+//     while(temp!=NULL){
+//         cout<<temp->val<<" ";
+//         temp=temp->next;
+//     }
+// }
+// int main(){
+//     Node* a=new Node(10);
+//     Node* b=new Node(20);
+//     Node* c=new Node(30);
+//     Node* d=new Node(40);
 
-    a->next=b;
-    b->next=c;
-    c->next=d;
+//     a->next=b;
+//     b->next=c;
+//     c->next=d;
 
-    display(a);
-    return 0;
-}
-
-
+//     display(a);
+//     return 0;
+// }
 
 
 
@@ -184,58 +182,60 @@ int main(){
 
 
 
-//  No of terms in linklist(size of linklist)
-#include<bits/stdc++.h>
-using namespace std;
 
-class Node{
-public:
-    int val;
-    Node* next;
-    Node(int val){
-        this->val=val;
-        this->next=NULL;
-    }
-};
 
-int size(Node* head){
-    Node* temp=head;
-    int c=0;
-    while(temp!=NULL){
-        c++;
-        temp=temp->next;
-    }
-    return c;
-}
+// //  No of terms in linklist(size of linklist)
+// #include<bits/stdc++.h>
+// using namespace std;
 
-void recursiveDisplay(Node* head){
-    if(head==NULL) return ;
-    cout<<head->val<<" ";
-    recursiveDisplay(head->next);
-}
+// class Node{
+// public:
+//     int val;
+//     Node* next;
+//     Node(int val){
+//         this->val=val;
+//         this->next=NULL;
+//     }
+// };
 
-void revDisplay(Node* head){
-    if(head==NULL) return ;
-    revDisplay(head->next);
-    cout<<head->val<<" ";
-}
+// int size(Node* head){
+//     Node* temp=head;
+//     int c=0;
+//     while(temp!=NULL){
+//         c++;
+//         temp=temp->next;
+//     }
+//     return c;
+// }
 
-int main(){
-    Node* a=new Node(10);
-    Node* b=new Node(20);
-    Node* c=new Node(30);
-    Node* d=new Node(40);
+// void recursiveDisplay(Node* head){
+//     if(head==NULL) return ;
+//     cout<<head->val<<" ";
+//     recursiveDisplay(head->next);
+// }
 
-    a->next=b;
-    b->next=c;
-    c->next=d;
+// void revDisplay(Node* head){
+//     if(head==NULL) return ;
+//     revDisplay(head->next);
+//     cout<<head->val<<" ";
+// }
 
-    cout<<size(a)<<endl;
-    recursiveDisplay(a);
-    cout<<endl;
-    revDisplay(a);
-    return 0;
-}
+// int main(){
+//     Node* a=new Node(10);
+//     Node* b=new Node(20);
+//     Node* c=new Node(30);
+//     Node* d=new Node(40);
+
+//     a->next=b;
+//     b->next=c;
+//     c->next=d;
+
+//     cout<<size(a)<<endl;
+//     recursiveDisplay(a);
+//     cout<<endl;
+//     revDisplay(a);
+//     return 0;
+// }
 
 
 
@@ -373,6 +373,19 @@ public:
         cout<<endl;
     }
 
+    int eleAtMidIndex(){
+        Node* slow=head;
+        Node* fast=head;
+        if(size==1) return head->val;
+        else{
+            while(fast!=NULL && fast->next!=NULL){
+                slow=slow->next;
+                fast=fast->next->next;
+            }
+        }
+        return slow->val;
+    }
+
 };
 int main(){
     LinkedList ll;
@@ -380,6 +393,7 @@ int main(){
     ll.display();
     ll.insertAtTail(30);
     ll.insertAtTail(40);
+    ll.insertAtTail(35);
     ll.display();
     cout<<ll.size<<endl<<endl;
 
@@ -392,14 +406,16 @@ int main(){
     
     cout<<ll.getStIndex(3)<<endl;
 
-    ll.deleteAtHead();
-    ll.display();
+    // ll.deleteAtHead();
+    // ll.display();
 
-    ll.deleteAtTail();
-    ll.display();
+    // ll.deleteAtTail();
+    // ll.display();
 
-    ll.deleteAtIndx(1);
-    ll.display();
+    // ll.deleteAtIndx(1);
+    // ll.display();
+
+    cout<<ll.eleAtMidIndex();
     return 0;
 }
 

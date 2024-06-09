@@ -1,3 +1,5 @@
+//All Paterns Problem Link: https://takeuforward.org/strivers-a2z-dsa-course/must-do-pattern-problems-before-starting-dsa/
+
 #include<bits/stdc++.h>
 using namespace std;
 int main(){

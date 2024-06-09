@@ -1,3 +1,5 @@
+//Problem Link: https://www.geeksforgeeks.org/problems/quick-sort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=quick-sort
+
 #include <bits/stdc++.h>
 using namespace std;
 int partation(int arr[],int low,int high){

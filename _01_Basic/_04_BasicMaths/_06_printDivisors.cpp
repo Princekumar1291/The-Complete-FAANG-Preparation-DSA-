@@ -1,3 +1,5 @@
+// Problem Link: https://www.geeksforgeeks.org/problems/sum-of-all-divisors-from-1-to-n4738/1
+
 #include<bits/stdc++.h>
 using namespace std;
 void printAllFact(int n){

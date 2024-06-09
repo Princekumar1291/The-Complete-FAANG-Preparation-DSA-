@@ -1,19 +1,16 @@
-#include<bits/stdc++.h>
-using namespace std;
-int main(){
-    int n;
-    cout<<"Enter a number: ";
-    cin>>n;
-    int m=n;
-    int count=0;
-    while(n>0){
-        int rem=n%10;
-        n/=10;
-        count++;
+// Problem Link: https://www.geeksforgeeks.org/problems/count-digits5716/1
+
+class Solution{
+public:
+    int evenlyDivides(int N){
+        int divisibles = 0;
+        int num = N;
+        
+        while(num){
+            int digit = num % 10;
+            if(digit != 0 && N % digit == 0) divisibles++;
+            num /= 10;
+        }
+        return divisibles;
     }
-    int count2=(log10(m)+1);
-    cout<<count<<endl;
-    cout<<count2<<endl;
-    
-    return 0;
-}
+};

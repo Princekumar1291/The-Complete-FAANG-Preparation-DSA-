@@ -127,6 +127,36 @@ Node* insertTail(Node* head,int ele){
   return head;
 }
 
+Node* insertBeforeEle(Node* head,int target,int ele){
+  Node* newNode=new Node(ele);
+  if(head==NULL) return newNode;
+  Node* temp=head;
+  while(temp!=NULL){
+    if(temp->val==target) break;
+    temp=temp->next;
+  }
+  if(temp==NULL) return head;
+  if(temp->back==NULL){
+    newNode->next=head;
+    head->back=newNode;
+    head=newNode;
+  }else{
+    newNode->next=temp;
+    temp->back->next=newNode;
+    newNode->back=temp->back;
+    temp->back=newNode;
+  }
+  return head;
+}
+
+void insertBeforeNode(Node* head,Node* node,int ele){
+  Node* newNode=new Node(ele);
+  newNode->next=node;
+  node->back->next=newNode;
+  newNode->back=node->back;
+  node->back=newNode;
+}
+
 int main(){
   int arr[]={10,20,30,40,50,60,70,80,90,100};
   int n=sizeof(arr)/sizeof(arr[0]);
@@ -144,6 +174,12 @@ int main(){
   display(head);
 
   head=insertTail(head,8);
+  display(head);
+
+  head=insertBeforeEle(head,30,200);
+  display(head);
+
+  insertBeforeNode(head,head->next,500);
   display(head);
 
   return 0;

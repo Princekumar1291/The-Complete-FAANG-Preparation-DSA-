@@ -63,3 +63,37 @@ public:
         return head1;
     }
 };
+
+
+
+
+
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        if(head==NULL || head->next==NULL) return head;
+        ListNode* head1=head;
+        ListNode* head2=head->next;
+
+        ListNode* temp=head->next->next;
+        int c=2;
+
+        ListNode* curr1=head1;
+        ListNode* curr2=head2;
+        while(temp!=NULL){
+            c++;
+            if(c%2==1) {
+                curr1->next=temp;
+                curr1=temp;
+            }
+            else {
+                curr2->next=temp;
+                curr2=temp;
+            }
+            temp=temp->next;
+        }
+        curr1->next=head2;
+        curr2->next = nullptr; // terminate the even list
+        return head1;
+    }
+};

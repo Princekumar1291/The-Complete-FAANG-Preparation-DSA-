@@ -25,3 +25,19 @@ Node* reverseDLL(Node * head){
 
 
 
+class Solution
+{
+    public:
+    Node* reverseDLL(Node * head)
+    {
+        //Your code here
+        if(head==NULL || head->next==NULL) return head;
+        Node* temp=head;
+        while(temp!=NULL){
+            swap(temp->prev,temp->next);
+            if(temp->prev!=NULL)temp=temp->prev;
+            else return temp;
+        }
+        return temp;
+    }
+};

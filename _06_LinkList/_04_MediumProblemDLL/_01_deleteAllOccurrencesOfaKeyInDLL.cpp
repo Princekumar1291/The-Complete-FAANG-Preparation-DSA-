@@ -2,20 +2,35 @@
 
 
 Node * deleteAllOccurrences(Node* head, int k) {
-    // Write your code here
-    if(head==NULL) return NULL;
-    while(head->data==k){
-        head=head->next;
-        if(head==NULL) return NULL;
-    }
-    Node* temp1=head;
-    Node* temp2=head->next;
-    while(temp2!=NULL){
-        if(temp2->data==k){
-            temp1->next=temp1->next->next;
+    if(head==NULL) return head;
+    Node* temp=head;
+    while(temp!=NULL){
+        if(temp->data==k){
+            Node* prv=temp->prev;
+            Node* nxt=temp->next;
+            if(prv==nxt) return NULL;
+            if(prv==NULL){
+                head=head->next;
+                head->prev=NULL;
+                temp=temp->next;
+            }
+            else if(nxt==NULL){
+                prv->next=NULL;
+                temp->prev=NULL;
+                temp=temp->next;
+            }
+            else{
+                prv->next=nxt;
+                nxt->prev=prv;
+                temp->prev=NULL;
+                Node* t=temp;
+                temp=temp->next;
+                t->next=NULL;
+            }
         }
-        temp1=temp2;
-        temp2=temp2->next;
+        else{
+            temp=temp->next;
+        }
     }
     return head;
 }

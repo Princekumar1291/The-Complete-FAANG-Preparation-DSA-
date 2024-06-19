@@ -11,7 +11,7 @@ int opWeight(char ch){
   return 2;
 }
 int main(){
-  string s="2+6*4/8-3";
+  string s="(7+9)*4/8-3";
   int n=s.size();
   stack<string> val;
   stack<char> op;
@@ -25,6 +25,18 @@ int main(){
       if(op.empty()){
         op.push(s[i]);
       }
+      else if(s[i]=='(') op.push(s[i]);
+      else if(op.top()=='(') op.push(s[i]);
+      else if(s[i]==')'){
+        while(!op.empty() && op.top()!='('){
+          string s2=val.top();val.pop();
+          string s1=val.top();val.pop();
+          char c=op.top();op.pop();
+          string ans=s1+s2+c;
+          val.push(ans);
+        }
+        op.pop();
+      }
       else if(opWeight(s[i])>opWeight(op.top())){
         op.push(s[i]);
       }
@@ -33,7 +45,7 @@ int main(){
           string s2=val.top();val.pop();
           string s1=val.top();val.pop();
           char c=op.top();op.pop();
-          string ans=c+s1+s2;
+          string ans=s1+s2+c;
           val.push(ans);
         }
         op.push(s[i]);
@@ -44,9 +56,11 @@ int main(){
     string s2=val.top();val.pop();
     string s1=val.top();val.pop();
     char c=op.top();op.pop();
-    string ans=c+s1+s2;
+    string ans=s1+s2+c;
     val.push(ans);
   }
   cout<<val.top();
   return 0;
 }
+
+

@@ -3,6 +3,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
+//O(2n);
 int totalFruits(int n, vector<int> &f) {
   int i=0,j=0,ans=0;
   unordered_map<int,int> mp;
@@ -17,6 +19,27 @@ int totalFruits(int n, vector<int> &f) {
               if(mp[f[i]]==0) mp.erase(f[i]);
               i++;
           }
+      }
+      j++;
+  }
+  return ans;
+}
+
+
+
+//O(n)
+int totalFruits(int n, vector<int> &f) {
+  int i=0,j=0,ans=0;
+  unordered_map<int,int> mp;
+  while(j<n){
+      mp[f[j]]++;
+      if(mp.size()<=2){
+          ans=max(ans,j-i+1);
+      }
+      else{
+          mp[f[i]]--;
+          if(mp[f[i]]==0) mp.erase(f[i]);
+          i++;
       }
       j++;
   }

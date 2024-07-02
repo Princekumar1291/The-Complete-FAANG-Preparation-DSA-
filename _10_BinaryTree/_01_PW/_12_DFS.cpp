@@ -80,6 +80,7 @@ int main(){
 
 
 
+
 class Solution {
 public:
     int height(Node* root){
@@ -104,6 +105,30 @@ public:
             printNthLevel(root,0,i,v);
             ans.push_back(v);
         }
+        return ans;
+    }
+};
+
+
+
+
+class Solution {
+public:
+    int height(Node* root){
+        if(root==NULL) return 0;
+        return 1+max(height(root->left),height(root->right));
+    }
+    void printNthLevel(Node* root,int t,vector<vector<int>>& v){
+        if(root==NULL) return ;
+        v[t].push_back(root->val);
+        t++;
+        printNthLevel(root->left,t,v);
+        printNthLevel(root->right,t,v);
+    }
+    vector<vector<int>> levelOrder(Node* root) {
+        int h=height(root);
+        vector<vector<int>> ans(h);
+        printNthLevel(root,0,ans);
         return ans;
     }
 };

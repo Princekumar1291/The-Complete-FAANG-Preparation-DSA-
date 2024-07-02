@@ -14,3 +14,6 @@ public:
         return ans;
     }
 };
+
+//T(best)--> O(h) beacuse call stack h is height
+//T(worse)--> O(n) n is nodes

@@ -1,21 +1,21 @@
 class Solution {
 public:
-    void traverse(TreeNode* root, int x, int y, map<int, map<int, multiset<int>>>& nodes) {
-        if (root==NULL) return ;
-        nodes[x][y].insert(root -> val);
-        traverse(root -> left, x - 1, y + 1, nodes);
-        traverse(root -> right, x + 1, y + 1, nodes);
+    void helper(TreeNode* root,auto& mp,int i,int j){
+        if(root==NULL) return ;
+        mp[i][j].insert(root->val);
+        helper(root->left,mp,i-1,j+1);
+        helper(root->right,mp,i+1,j+1);
     }
     vector<vector<int>> verticalTraversal(TreeNode* root) {
-        map<int, map<int, multiset<int>>> nodes;
-        traverse(root, 0, 0, nodes);
         vector<vector<int>> ans;
-        for (auto p : nodes) {
-            vector<int> col;
-            for (auto q : p.second) {
-                col.insert(col.end(), q.second.begin(), q.second.end());
+        map<int,map<int,multiset<int>>> mp;
+        helper(root,mp,0,0);
+        for(auto ele:mp){
+            vector<int> temp;
+            for(auto el:ele.second){
+                for(auto e:el.second) temp.push_back(e);
             }
-            ans.push_back(col);
+            ans.push_back(temp);
         }
         return ans;
     }

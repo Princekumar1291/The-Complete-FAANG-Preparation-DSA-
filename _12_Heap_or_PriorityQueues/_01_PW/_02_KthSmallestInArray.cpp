@@ -18,7 +18,8 @@ int main(){
     if(pq.size()>k) pq.pop();
   }
   cout<<pq.top()<<endl;
-  
-  
   return 0;
 }
+
+// time--> O(nlog(k))
+// space--> O(k)

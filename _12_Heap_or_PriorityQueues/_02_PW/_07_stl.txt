@@ -1,0 +1,39 @@
+STL Functions for Heap Operations
+make_heap(): Converts given range to a heap.
+push_heap(): Arrange the heap after insertion at the end.
+pop_heap(): Moves the max element at the end for deletion.
+sort_heap(): Sort the elements of the max_heap to ascending order.
+is_heap(): Checks if the given range is max_heap. 
+
+int all is_heap(begin_iterator, end_iterator);
+
+
+
+
+
+   Convert array to heap
+Stl MaxHeap--> make_heap(v.begin(),v.end());
+Stl Min_Heap--> make_heap(v.begin(),v.end(),greater<int>());
+
+
+push ele to heap by stl
+   v.push_back(5); 
+   push_heap(v.begin(), v.end(),greater<int>());
+
+
+pop max heap ele 
+pop_heap(v.begin(),v.end());
+v.pop_back();
+
+
+
+if starting from 0 index then 
+l=2*i+1;
+r=2*i+2;
+parent=(i-1)/2;
+
+
+if starting from 1 index then 
+l=2*i;
+r=2*i+1;
+parent=i/2;

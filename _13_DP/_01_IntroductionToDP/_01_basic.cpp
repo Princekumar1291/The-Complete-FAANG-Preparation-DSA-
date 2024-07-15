@@ -3,6 +3,25 @@
 
 //Fibonacii number 
 
+// Try all possible way 
+//  /      \
+// count  best way then think about recursion
+
+
+//Shortcut
+// 1) try to represent the problem in terms of index
+// 2) Do all possible stugg on that on that index according to the problem statement
+// 3) sum of all stuff --> count all ways
+//    min of all stuff --> find min
+
+
+
+
+
+
+
+
+
 #include<bits/stdc++.h>
 using namespace std;
 int fibo(int n,vector<int>& dp){

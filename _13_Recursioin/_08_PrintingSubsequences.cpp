@@ -18,3 +18,7 @@ int main(){
   printAllSubsequence(v,temp,0,n);
   return 0;
 }
+
+
+// TC--> O(2^n)
+// Stack Space--> O(n)

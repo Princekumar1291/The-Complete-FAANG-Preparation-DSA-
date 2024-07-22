@@ -28,7 +28,7 @@ class Solution {
 
 
 
-//opt
+//opt memorization top-down
 
 //{ Driver Code Starts
   class Solution {
@@ -48,3 +48,52 @@ class Solution {
         return f(height,n-1,dp);
     }
 };
+
+
+
+
+
+
+//opt dp bottom-Up
+
+class Solution {
+  public:
+    int minimumEnergy(vector<int>& v, int n) {
+        vector<int> dp(n,0);
+        dp[0]=0;
+        int ss=INT_MAX;
+        for(int i=1;i<n;i++){
+            int fs=dp[i-1]+abs(v[i]-v[i-1]);
+            if(i>1) ss=dp[i-2]+abs(v[i]-v[i-2]);
+            dp[i]=min(fs,ss);
+        }
+        return dp[n-1];
+    }
+};
+
+
+//dp space opt
+class Solution {
+  public:
+    int minimumEnergy(vector<int>& v, int n) {
+        if(n==1) return 0;
+        if(n==2) return abs(v[1]-v[0]);
+        int dp1=0;
+        int dp2=abs(v[1]-v[0]);
+        for(int i=2;i<n;i++){
+            int fs=dp2+abs(v[i]-v[i-1]);
+            int ss=dp1+abs(v[i]-v[i-2]);
+            dp1=dp2;
+            dp2=min(fs,ss);
+        }
+        return dp2;
+    }
+};
+
+
+
+
+
+
+
+

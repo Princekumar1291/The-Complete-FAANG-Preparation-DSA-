@@ -30,7 +30,7 @@ class Solution {
 
 
 
-//optmal
+//optmal memoization
 class Solution {
   public:
     int helper(vector<int>& height,int n,int k,vector<int>& v){
@@ -47,5 +47,30 @@ class Solution {
     int minimizeCost(vector<int>& height, int n, int k) {
         vector<int> v(n,-1);
         return helper(height,n-1,k,v);
+    }
+};
+
+
+
+
+
+
+//dp
+
+class Solution {
+  public:
+    int minimizeCost(vector<int>& height, int n, int k) {
+        vector<int> dp(n,-1);
+        dp[0]=0;
+        for(int i=1;i<n;i++){
+            int temp=INT_MAX;
+            for(int j=1;j<=k;j++){
+                int dem=INT_MAX;
+                if(i-j>=0) dem=dp[i-j]+abs(height[i]-height[i-j]);
+                temp=min(temp,dem);
+            }
+            dp[i]=temp;
+        }
+        return dp[n-1];
     }
 };

@@ -42,3 +42,35 @@ public:
         return dp [ m-1 ] [ n-1 ] ;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int fact(int n,int r){
+    double sum=1;
+    for(int i = 1; i <= r; i++){
+        sum = sum * (n - r + i) / i;
+    }
+    return (int)sum;
+}
+
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        int t=n+m-2;
+        int r=m-1;
+        //ncr
+        int ans=fact(t,r);
+        return (int)ans;
+    }
+};

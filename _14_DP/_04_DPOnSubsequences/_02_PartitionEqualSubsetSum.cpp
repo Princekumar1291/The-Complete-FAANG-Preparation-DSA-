@@ -13,7 +13,7 @@ public:
         bool take=false;
         if(target>=nums[i]) take=helper(nums,target-nums[i],i-1,dp); 
         return dp[i][target]=notTake||take;
-    }
+    } 
     bool canPartition(vector<int>& nums) {
         int n=nums.size();
         int target=0;

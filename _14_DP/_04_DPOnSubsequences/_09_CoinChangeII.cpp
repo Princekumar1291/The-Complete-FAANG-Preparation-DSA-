@@ -7,7 +7,7 @@ class Solution {
 public:
     int helper(vector<int>& arr,int target,int i,vector<vector<int>>& dp){
         if(i==0){
-            if(target==0 && arr[0]==0) return 2;
+            // if(target==0 && arr[0]==0) return 2;
             if(target%arr[0]==0) return 1;
             else return 0;
         }

@@ -3,7 +3,7 @@
 
 
 
-class Solution {
+class Solution { 
   public:
     void findAllLCS(string &s, string &t, int i, int j, vector<vector<int>> &dp, string str, set<string> &st) {
         while (i > 0 && j > 0) {

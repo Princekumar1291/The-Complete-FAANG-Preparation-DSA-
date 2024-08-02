@@ -1,4 +1,4 @@
-//adjacency list --> in this approch we represent a graph as a array of link list
+//adjacency list --> in this approch we represent a graph as a array of link list 
 
 #include<bits/stdc++.h>
 using namespace std;

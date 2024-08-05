@@ -11,7 +11,6 @@ class Solution {
         dfs.push_back(node);
         for(auto ele:adj[node]){
             if(vis[ele]==0){
-                vis[ele]=1;
                 dfsFun(ele,dfs,vis,adj);
             }
         }

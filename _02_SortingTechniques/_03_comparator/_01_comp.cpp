@@ -1,23 +1,23 @@
-// Online C++ compiler to run C++ program online
-#include <bits/stdc++.h>
-using namespace std;
-
-// Comparator function for sorting
-bool myComp(const pair<int,int>& p1, const pair<int,int>& p2) {
-    return p1.second < p2.second;
-}
-
-// Function to print vector of pairs
-void printV(const vector<pair<int,int>>& v) {
-    for(const auto& p : v) {
-        cout << p.first << " " << p.second << endl;
+class Solution {
+  public:
+    static bool myComp(const pair<int,int>& p1,const pair<int,int>& p2){
+        if(p1.first==p2.first) return p1.second<p2.second;
+        else return p1.first>p2.first;
     }
-}
-
-int main() {
-    vector<pair<int,int>> v({{5,2},{5,3},{5,4},{8,3},{2,5}});
-    sort(v.begin(), v.end(), myComp);
-    printV(v);
-    
-    return 0;
-}
+    vector<int> sortByFreq(vector<int>& arr) {
+        
+        unordered_map<int,int> mp;
+        for(auto ele:arr) mp[ele]++;
+        
+        vector<int> ans;
+        vector<pair<int,int>> freq;
+        for(auto ele:mp) freq.push_back({ele.second,ele.first});
+        sort(freq.begin(),freq.end(),myComp);
+        
+        for(auto v:freq){
+            int c=v.first;
+            while(c--) ans.push_back(v.second);
+        }
+        return ans;
+    }
+};

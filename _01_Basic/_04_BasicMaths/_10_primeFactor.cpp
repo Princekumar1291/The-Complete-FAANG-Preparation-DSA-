@@ -1,3 +1,6 @@
+//Problem Link: https://leetcode.com/problems/distinct-prime-factors-of-product-of-array/description/
+
+
 #include<bits/stdc++.h>
 using namespace std;
 void allPrime(vector<int>& ans,int n){

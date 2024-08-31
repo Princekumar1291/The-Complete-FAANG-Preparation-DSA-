@@ -1,3 +1,5 @@
+// a word or phrase that is made by arranging the letters of another word or phrase in a different order 
+
 #include<bits/stdc++.h>
 using namespace std;
 bool isAnagram(string& s1,string& s2){

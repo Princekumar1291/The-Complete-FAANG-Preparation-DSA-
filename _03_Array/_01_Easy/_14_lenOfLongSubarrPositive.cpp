@@ -1,3 +1,8 @@
+//Problem Link: https://www.naukri.com/code360/problems/longest-subarray-with-sum-k_6682399?utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_Arrayproblems
+
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 // array having only positive element 

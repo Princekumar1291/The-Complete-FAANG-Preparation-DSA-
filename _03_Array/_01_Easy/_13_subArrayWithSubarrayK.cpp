@@ -1,3 +1,8 @@
+//Problem Link: https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=longest-sub-array-with-sum-k
+
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 //array can have both positive and negative element
@@ -15,23 +20,25 @@ int subArrayBrut(vector<int> v,int target){
   return mxLength;
 }
 
-int lenOfLongSubarr(vector<int> A, int K){
-  int n=A.size();
-  unordered_map<int, int> mp;
-  int sum = 0;
-  int maxRange = 0;
-  for (int i = 0; i < n; i++){
-    sum += A[i];
-    if (mp.find(sum) == mp.end()) mp[sum] = i;
-    if (sum == K) maxRange = i + 1;
-    int rem = sum - K;
-    if (mp.find(rem) != mp.end()){
-      int len = i - mp[rem];
-      maxRange = max(maxRange, len);
-    }
-  }
-  return maxRange;
-}
+class Solution{
+    public:
+    int lenOfLongSubarr(int arr[],  int n, int k){
+        int maxLen=0;
+        int sum=0;
+        unordered_map<int,int> mp;
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+            if(sum==k) maxLen=i+1;
+            int diff=sum-k;
+            if(mp.find(diff)!=mp.end()){
+                maxLen=max(maxLen,i-mp[diff]);
+            }
+            if(mp.find(sum)==mp.end()) mp[sum]=i;
+        }
+        return maxLen;
+    } 
+
+};
 
 
 

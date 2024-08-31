@@ -6,22 +6,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 // array having only positive element 
-int lenOfLongSubarr(vector<int> v,int target){
-  int left=0,right=0;
-  int sum=0;
-  int n=v.size();
-  int mxLength=0;
-
-  while(right<n){
-    while(sum>target){
-      sum-=v[left];
-      left++;
+int longestSubarrayWithSumK(vector<int> v, long long k) {
+    int n=v.size();
+    int ans=0;
+    long long sum=0;
+    int i=0;
+    int j=0;
+    while(i<n){
+        sum+=v[i];
+        while(j<i && sum>k) {
+            sum-=v[j];
+            j++;
+        }
+        if(sum==k) ans=max(ans,i-j+1);
+        i++;
     }
-    if(sum==target) mxLength=max(mxLength,right-left);
-    sum+=v[right];
-    right++;
-  }
-  return mxLength;
+    return ans;
 }
 
 int main(){

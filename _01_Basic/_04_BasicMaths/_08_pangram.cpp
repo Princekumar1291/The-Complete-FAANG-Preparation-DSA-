@@ -1,3 +1,5 @@
+// A pangram is a sentence that uses every letter of the alphabet at least once.
+
 #include<bits/stdc++.h>
 using namespace std;
 bool isPangram(string& s){

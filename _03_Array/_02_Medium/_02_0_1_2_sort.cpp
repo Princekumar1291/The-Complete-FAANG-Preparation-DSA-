@@ -27,6 +27,11 @@ void sort012(vector<int>& v){  //O(n)
   
 }
 
+//0 to low-1  --> 0
+//low to mid-1 -> 1
+//mid to high-1 -> unsorted elements
+//high to n-1  -> 2
+
 void sort012ByTwoPointer(vector<int> &v){ //O(n)
   int n = v.size();
   int low = 0;

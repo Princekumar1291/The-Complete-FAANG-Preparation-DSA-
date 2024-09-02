@@ -12,6 +12,8 @@ int maxProfitBrut(vector<int> v){
   return mxProfit;
 }
 
+
+//If you are selleing on ith day you buy on the minimum from first day to (i-1)th day.
 int maxProfit(vector<int> &prices){
   int n = prices.size();
   int minVal = prices[0];

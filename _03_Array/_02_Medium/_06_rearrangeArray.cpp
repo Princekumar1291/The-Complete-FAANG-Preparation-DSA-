@@ -19,42 +19,6 @@ vector<int> rearrangeArray(vector<int> &nums){
   return ans;
 }
 
-
-
-
-
-class Solution {
-public:
-    vector<int> rearrangeArray(vector<int>& nums) {
-        int n = nums.size();
-        int posIndex = 0, negIndex = 1;
-
-        while (posIndex < n && negIndex < n) {
-            // Find the next positive number that is out of place
-            while (posIndex < n && nums[posIndex] > 0) {
-                posIndex += 2;
-            }
-
-            // Find the next negative number that is out of place
-            while (negIndex < n && nums[negIndex] < 0) {
-                negIndex += 2;
-            }
-
-            // Swap the out-of-place positive and negative numbers
-            if (posIndex < n && negIndex < n) {
-                swap(nums[posIndex], nums[negIndex]);
-            }
-        }
-        return nums;
-    }
-};
-
-
-
-
-
-
-
 int main() {
     vector<int> nums = {3, 1, -2, -5, 2, -4};
     vector<int> result = rearrangeArray(nums);

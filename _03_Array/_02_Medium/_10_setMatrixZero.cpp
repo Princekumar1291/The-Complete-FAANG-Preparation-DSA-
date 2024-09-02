@@ -54,7 +54,54 @@ void setZeroesBrut2(vector<vector<int>> &v){
 
 
 
-int main(){
-  
-  return 0;
-}
+
+
+
+class Solution {  //best
+public:
+    void setZeroes(vector<vector<int>>& mat) {
+        int m = mat.size();
+        int n = mat[0].size();
+        
+        bool firstRowZero = false, firstColZero = false;
+        
+        // Determine if the first row and first column should be zero
+        for (int i = 0; i < m; i++) {
+            if (mat[i][0] == 0) firstColZero = true;
+        }
+        for (int j = 0; j < n; j++) {
+            if (mat[0][j] == 0) firstRowZero = true;
+        }
+        
+        // Use the first row and first column to mark zeroes
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (mat[i][j] == 0) {
+                    mat[i][0] = 0;
+                    mat[0][j] = 0;
+                }
+            }
+        }
+        
+        // Set matrix elements to zero based on the marks
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (mat[i][0] == 0 || mat[0][j] == 0) {
+                    mat[i][j] = 0;
+                }
+            }
+        }
+        
+        // Finally, set the first row and first column to zero if needed
+        if (firstColZero) {
+            for (int i = 0; i < m; i++) {
+                mat[i][0] = 0;
+            }
+        }
+        if (firstRowZero) {
+            for (int j = 0; j < n; j++) {
+                mat[0][j] = 0;
+            }
+        }
+    }
+};

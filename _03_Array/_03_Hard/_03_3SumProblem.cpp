@@ -39,29 +39,29 @@ vector<vector<int>> tripletBetter(int n, vector<int> &arr) {
   return ans;
 }
 
-vector<vector<int>> threeSumOpt(vector<int>& v) {
-  int n=v.size();
-  sort(v.begin(),v.end());
-  vector<vector<int>> ans;
-  for(int i=0;i<n-2;i++){
-      if(i!=0 && v[i]==v[i-1] ) continue;
-      int j=i+1;
-      int k=n-1;
-      while(j<k){
-          int sum=v[i]+v[j]+v[k];
-          int lEle=v[j];
-          int rEle=v[k];
-          if(sum>0) k--;
-          else if(sum<0) j++;
-          else if(sum==0){
-              vector<int> temp={v[i],v[j],v[k]};
-              ans.push_back(temp);
-              while(j<k && v[j]==lEle) j++;
-              while(j<k && v[k]==rEle) k--;
-          }
-      }
-  }
-  return ans;
+vector<vector<int>> threeSum(vector<int>& v) {
+    int n=v.size();
+    sort(v.begin(),v.end());
+    vector<vector<int>> ans;
+    for(int i=0;i<n;i++){
+        if(i!=0 && v[i]==v[i-1]) continue;
+        int j=i+1;
+        int k=n-1;
+        while(j<k){
+            int sum=v[i]+v[j]+v[k];
+            if(sum==0){
+                ans.push_back({v[i],v[j],v[k]});
+                int ele1=v[j];
+                int ele2=v[k];
+                j++;k--;
+                while(j<k && v[j]==ele1) j++;
+                while(j<k && v[k]==ele2) k--;
+            }
+            else if(sum<0) j++;
+            else k--;
+        }
+    }
+    return ans;
 }
 
 int main()

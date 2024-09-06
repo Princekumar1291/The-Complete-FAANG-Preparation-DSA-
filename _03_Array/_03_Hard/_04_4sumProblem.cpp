@@ -53,35 +53,36 @@ vector<vector<int>> fourSumBetter(vector<int> &nums, int target){
   return ans;
 }
 
-vector<vector<int>> fourSumOpt(vector<int> v,int target){  //O(n3)
-  int n=v.size();
-  sort(v.begin(),v.end());
-  vector<vector<int>> ans;
-  for(int i=0;i<n;i++){
-      if(i!=0 && v[i]==v[i-1]) continue;
-      for(int j=i+1;j<n;j++){
-          if(j!=i+1 && v[j]==v[j-1]) continue;
-          int k=j+1;
-          int l=n-1;
-          while(k<l){
-              long long sum=v[i];
-              sum+=v[j];
-              sum+=v[k];
-              sum+=v[l];
-              if(sum<target) k++;
-              else if(sum>target) l--;
-              else if(sum==target){
-                  int lEle=v[k];
-                  int rEle=v[l];
-                  vector<int> temp={v[i],v[j],v[k],v[l]};
-                  ans.push_back(temp);
-                  while(k<l && v[k]==lEle) k++;
-                  while(k<l && v[l]==rEle) l--;
-              }
-          }
-      }
-  }
-  return ans;
+vector<vector<int>> fourSum(vector<int>& v, int target) { //O(n3)
+    int n=v.size();
+    sort(v.begin(),v.end());
+    vector<vector<int>> ans;
+    for(int i=0;i<n;i++){
+        if(i!=0 && v[i]==v[i-1]) continue;
+        for(int j=i+1;j<n;j++){
+            if(j!=i+1 && v[j]==v[j-1]) continue;
+            int k=j+1;
+            int l=n-1;
+            while(k<l){
+                long long sum=v[i];
+                sum+=v[j];
+                sum+=v[k];
+                sum+=v[l];
+                if(sum==target){
+                    ans.push_back({v[i],v[j],v[k],v[l]});
+                    int ele1=v[k];
+                    int ele2=v[l];
+                    k++;
+                    l--;
+                    while(k<l && v[k]==ele1) k++;
+                    while(k<l && v[l]==ele2) l--;
+                }
+                else if(sum<target) k++;
+                else l--;
+            }
+        }
+    }
+    return ans;
 }
 
 int main(){

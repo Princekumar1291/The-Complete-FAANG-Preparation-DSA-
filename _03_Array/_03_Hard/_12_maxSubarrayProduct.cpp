@@ -32,7 +32,17 @@ int maxProduct(vector<int>& nums) {
         return maxPro;
     }
 
-int main(){
-  
-  return 0;
-} 
+
+int maxProduct(vector<int>& nums) {
+  int n = nums.size();
+  int prePro = 1;
+  int sufPro = 1;
+  int ans = INT_MIN;
+
+  for (int i = 0; i < n; i++) {
+    prePro = (prePro == 0) ? nums[i] : prePro * nums[i];
+    sufPro = (sufPro == 0) ? nums[n-1-i] : sufPro * nums[n-1-i];
+    ans = max(ans, max(prePro, sufPro));
+  }
+  return ans;
+}

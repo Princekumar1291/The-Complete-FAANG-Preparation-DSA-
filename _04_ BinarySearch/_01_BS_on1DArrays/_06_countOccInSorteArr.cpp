@@ -1,3 +1,6 @@
+//Problem Link: https://www.geeksforgeeks.org/problems/number-of-occurrence2259/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number-of-occurrence
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -45,4 +48,14 @@ int main(){
     int result = count(arr, n, x);
     cout << "The count of " << x << " in the array is: " << result << endl;
     return 0;
+}
+
+
+
+
+int count(int arr[], int n, int x) {
+    int lb=lower_bound(arr,arr+n,x)-arr;
+    int up=upper_bound(arr,arr+n,x)-arr;
+    if(lb==up) return 0;
+    return up-lb;
 }

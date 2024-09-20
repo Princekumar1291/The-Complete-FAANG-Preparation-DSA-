@@ -1,27 +1,30 @@
+//Problem Link: https://leetcode.com/problems/koko-eating-bananas/description/
+
 #include<bits/stdc++.h>
 using namespace std;
 
 int minEatingSpeed(vector<int>& piles, int h) {
-  int left = 1;
-  int right = *max_element(piles.begin(), piles.end());
-  int ans=0;
-  while (left <= right) {
-      int mid = left + (right - left) / 2;
-      long long total_hours = 0;
-      for (int pile : piles) {
-          if(pile%mid==0) total_hours+=pile/mid;
-          else total_hours+=(pile/mid)+1;
-          // total_hours += ceil((double)pile / mid);
-      }
-      if (total_hours > h) {
-          left = mid + 1;
-      }
-        else {
-          ans=mid;
-          right = mid-1;
-      }
-  }
-  return ans;
+    int n=piles.size();
+    int maxEle=*max_element(piles.begin(),piles.end());
+    int low=1;int high=maxEle;
+    int ans;
+    while(low<=high){
+        int mid=low+(high-low)/2;
+        int hr=0;
+        for(int i=0;i<n;i++){
+            hr+=piles[i]/mid;
+            if(piles[i]%mid!=0) hr++;
+            if(hr>h) break;
+        }
+        if(hr>h){
+            low=mid+1;
+        }
+        else{
+            high=mid-1;
+            ans=mid;
+        }
+    }
+    return ans;
 }
 
 

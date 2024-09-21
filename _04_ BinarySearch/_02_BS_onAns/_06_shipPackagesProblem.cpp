@@ -1,35 +1,44 @@
+//Problem Link: https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
-int helper(vector<int> v, int weight) {
-  int n = v.size();
-  int ans = 0;
-  int sum = 0;
-  for (int i = 0; i < n; i++) {
-      sum += v[i];
-      if (sum > weight) {
-          ans++;
-          sum = v[i];
+int calDays(int mid,vector<int>& weights){
+  int n=weights.size();
+  int day=0;
+  int sum=0;
+  for(int i=0;i<n;i++){
+      if(sum<mid){
+          sum+=weights[i];
+          if(sum==mid){
+              day++;
+              sum=0;
+          }
+          else if(sum>mid){
+              day++;
+              sum=weights[i];
+          }
       }
   }
-  ans++; // For the last sub-array
-  return ans;
+  if(sum!=0) day++;
+  return day;
 }
-
 int shipWithinDays(vector<int>& weights, int days) {
-  int sum = 0;
-  for (auto ele : weights) sum += ele;
-  int low = *max_element(weights.begin(), weights.end());
-  int high = sum;
-  int ans = -1;
-  while (low <= high) {
-      int mid = low + (high - low) / 2;
-      int temp = helper(weights, mid);
-      if (temp > days) low = mid + 1;
-      else {
-          ans = mid;
-          high = mid - 1;
+  int totalWeights=0;
+  for(int ele:weights) totalWeights+=ele;
+  int low=*max_element(weights.begin(),weights.end());
+  int high=totalWeights;
+  int ans;
+  while(low<=high){
+      int mid=low+(high-low)/2;
+      int tempDays=calDays(mid,weights);
+      // cout<<mid<<" "<<tempDays<<endl;
+      if(tempDays<=days){
+          high=mid-1;
+          ans=mid;
       }
+      else low=mid+1;
   }
   return ans;
 }

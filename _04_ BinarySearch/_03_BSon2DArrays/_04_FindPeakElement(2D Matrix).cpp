@@ -1,24 +1,52 @@
+//Problem Link: https://leetcode.com/problems/find-a-peak-element-ii/description/
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
 vector<int> findPeakGrid(vector<vector<int>>& mat) {
-  int startCol = 0, endCol = mat[0].size()-1;
-  while(startCol <= endCol){
-    int midCol = startCol + (endCol-startCol)/2;
-    int maxRow = 0; 
-    for(int i=0; i<mat.size(); i++){
-      maxRow = mat[i][midCol] >= mat[maxRow][midCol]? i : maxRow;   
-    }
-    bool leftIsBig    =   midCol >= startCol+1  &&  mat[maxRow][midCol-1] > mat[maxRow][midCol];
-    bool rightIsBig   =   midCol <= endCol-1    &&  mat[maxRow][midCol+1] > mat[maxRow][midCol];
-    if(!leftIsBig && !rightIsBig) return vector<int>{ maxRow, midCol};
-    else if(rightIsBig)  startCol = midCol+1; 
-    else endCol = midCol-1;
+  int m = mat.size();
+  int n = mat[0].size();
+  
+  // Direction vectors: {up, down, left, right}
+  vector<pair<int, int>> dir = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+  
+  for (int i = 0; i < m; i++) {
+      for (int j = 0; j < n; j++) {
+          bool isPeak = true;
+          
+          // Check all four directions
+          for (auto it : dir) {
+              int x = i + it.first;
+              int y = j + it.second;
+              
+              // Ensure (x, y) is within bounds and check if the neighbor is greater
+              if (x >= 0 && x < m && y >= 0 && y < n && mat[x][y] > mat[i][j]) {
+                  isPeak = false;
+                  break;
+              }
+          }
+          
+          // If current element is a peak, return its coordinates
+          if (isPeak) {
+              return {i, j};
+          }
+      }
   }
-  return vector<int>{-1,-1};
+  
+  return {0, 0}; // In case no peak is found, though a peak should always exist
 }
 
 int main(){
-  
+  int m,n;
+  cin>>m>>n;
+  vector<vector<int>> mat(m,vector<int>(n));
+  for(int i=0;i<m;i++){
+    for(int j=0;j<n;j++){
+      cin>>mat[i][j];
+    }
+  }
+  vector<int> ans=findPeakGrid(mat);
+  cout<<ans[0]<<" "<<ans[1];
   return 0;
 }

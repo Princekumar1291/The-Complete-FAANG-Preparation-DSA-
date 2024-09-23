@@ -1,3 +1,6 @@
+//Problem Link: https://www.geeksforgeeks.org/problems/row-with-max-1s0023/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=row-with-max-1s
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -36,19 +39,22 @@ int lowerBound(vector<int> arr, int n, int x) {
   }
   return ans;
 }
-int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
-    int cntMax = 0;
-    int index = -1;
-
-    //traverse the rows:
-    for (int i = 0; i < n; i++) {
-        int cntOnes = m - lowerBound(matrix[i], m, 1);
-        if (cntOnes > cntMax) {
-            cntMax = cntOnes;
-            index = i;
+int rowWithMax1s(vector<vector<int> > &arr) {
+    int n=arr.size();
+    int m=arr[0].size();
+    int i=0;
+    int j=m-1;
+    int ans=-1;
+    while(i<n && j>=0){
+        if(arr[i][j]==1){
+            ans=i;
+            j--;
+        }
+        else{
+            i++;
         }
     }
-    return index;
+    return ans;
 }
 
 int main()
@@ -56,6 +62,6 @@ int main()
     vector<vector<int>> matrix = {{1, 1, 1}, {0, 0, 1}, {0, 0, 0}};
     int n = 3, m = 3;
     cout << "The row with maximum no. of 1's is: " <<
-         rowWithMax1s(matrix, n, m) << '\n';
+         rowWithMax1s(matrix) << '\n';
 }
 

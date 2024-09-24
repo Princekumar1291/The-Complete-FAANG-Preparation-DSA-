@@ -1,3 +1,5 @@
+//Problem Link: https://www.geeksforgeeks.org/problems/longest-distinct-characters-in-string5848/1?page=1&difficulty%255B%255D=0&category%255B%255D=Strings&sortBy=submissions
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -37,6 +39,21 @@ int lengthOfLongestSubstringDistinctChars(string s) {
     right++;
   }
   ans=max(ans,right-left);
+  return ans;
+}
+
+int longestSubstrDistinctChars(string s) {
+  int ans = 0;
+  int low = 0;
+  unordered_map<char, int> mp;
+  for (int i = 0; i < s.size(); i++) {
+      if (mp.find(s[i]) != mp.end() && mp[s[i]] >= low) {
+          low = mp[s[i]] + 1;  
+      }
+      mp[s[i]] = i;
+      ans = max(ans, i - low + 1);
+  }
+  
   return ans;
 }
 

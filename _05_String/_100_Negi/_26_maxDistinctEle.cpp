@@ -19,6 +19,24 @@ int longestUniqueSubsttr(string s){
     }
     return ans;
 }
+
+int longestUniqueSubsttr(string s) {
+    int n = s.size();
+    int ans = 0;
+    vector<int> v(128, -1); 
+    int low = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (v[s[i]] >= low) {  
+            low = v[s[i]] + 1;
+        }
+        ans = max(ans, i - low + 1); 
+        v[s[i]] = i; 
+    }
+
+    return ans;
+}
+
 int main(){
   
   return 0;

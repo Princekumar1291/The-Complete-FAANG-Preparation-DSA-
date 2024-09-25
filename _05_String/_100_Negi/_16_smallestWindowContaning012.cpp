@@ -24,6 +24,27 @@ int smallestSubstring(string S) {
   return ans==INT_MAX ? -1 : ans;
 }
 
+
+
+int smallestSubstring(string S) {
+  int n=S.size();
+  int ans=INT_MAX;
+  int low=0;
+  vector<int> v(3,0);
+  for(int i=0;i<n;i++){
+      v[S[i]-'0']++;
+      while(v[S[low]-'0']>1) {
+          v[S[low]-'0']--;
+          low++;
+      }
+      if(v[0]>0 && v[1]>0 && v[2]>0){
+          ans=min(ans,i-low+1);
+      }
+  }
+  return ans==INT_MAX ? -1 : ans;
+}
+
+
 int main(){
   
   return 0;

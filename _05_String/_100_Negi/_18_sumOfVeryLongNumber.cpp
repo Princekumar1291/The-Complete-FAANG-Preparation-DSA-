@@ -1,3 +1,6 @@
+//Problem Link: https://www.geeksforgeeks.org/problems/sum-of-numbers-or-number1219/1?page=1&difficulty%255B%255D=1&category%255B%255D=Strings&sortBy=submissions
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -35,36 +38,42 @@ string findSum(string x, string y) {
   return ans;
 }
 
-string addStrings(string num1, string num2) {
-  reverse(num1.begin(),num1.end());
-  reverse(num2.begin(),num2.end());
-  int n=num1.size();
-  int m=num2.size();
-
+string findSum(string x, string y) {
+  // Your code goes here
   string ans="";
+  reverse(x.begin(),x.end());
+  reverse(y.begin(),y.end());
+  int n=x.size();
+  int m=y.size();
+  
+  int i=0;
   int carry=0;
-  for(int i=0;i<min(n,m);i++){
-    int a=num1[i]-'0';
-    int b=num2[i]-'0';
-    int temp=a+b+carry;
-    carry=temp/10;
-    ans+=to_string(temp%10);
+  while(i<n && i<m){
+      int a=x[i]-'0';
+      int b=y[i]-'0';
+      int sum=(a+b+carry)%10;
+      ans+=to_string(sum);
+      carry=(a+b+carry)/10;
+      i++;
   }
-  if(m>n){
-    swap(n,m);
-    swap(num1,num2);
+  while(i<n){
+      int a=x[i]-'0';
+      int sum=(a+carry)%10;
+      ans+=to_string(sum);
+      carry=(a+carry)/10;
+      i++;
   }
-  if(n>m){
-    for(int i=m;i<n;i++){
-        int a=num1[i]-'0';
-        int temp=a+carry;
-        carry=temp/10;
-        ans+=to_string(temp%10);
-    }
+  while(i<m){
+      int a=y[i]-'0';
+      int sum=(a+carry)%10;
+      ans+=to_string(sum);
+      carry=(a+carry)/10;
+      i++;
   }
-  ans+=to_string(carry);
-  while(ans.back()=='0' && ans.size()>1) ans.pop_back();
-
+  if(carry!=0) ans+=to_string(carry);
+  while(ans.size()>1 && ans.back()=='0'){
+      ans.pop_back();
+  }
   reverse(ans.begin(),ans.end());
   return ans;
 }

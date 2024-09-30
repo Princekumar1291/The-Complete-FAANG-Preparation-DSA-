@@ -1,20 +1,31 @@
 #include<bits/stdc++.h>
 using namespace std;
-bool isPalindrome(string s){
-
+class Node{
+  public:
+  int val;
+  Node* next;
+  Node(int val){
+    this->val=val;
+    next=NULL;
+  }
+};
+void display(Node* head){
+  while(head!=NULL) {
+    cout<<head->val<<" ";
+    head=head->next;
+  }cout<<endl;
 }
 int main(){
-  vector<int> v={1,2,3,4,5};
-  int k=2;
-  // k=v.size()-k;
-  reverse(v.begin(),v.begin()+k);
-  reverse(v.begin()+k,v.end());
-  reverse(v.begin(),v.end());
-  for(auto ele:v) cout<<ele<<" ";
+  int arr[]={1,2,13,4,55};
+  int n=sizeof(arr)/sizeof(arr[0]);
+  Node* head=new Node(arr[0]);
+  Node* temp=head;
+  for(int i=1;i<n;i++){
+    Node* newNode=new Node(arr[i]);
+    temp->next=newNode;
+    temp=temp->next;
+  }
+
+  display(head);
   return 0;
 }
-
-
-
-//4 5 1 2 3 
-//3 4 5 1 2 

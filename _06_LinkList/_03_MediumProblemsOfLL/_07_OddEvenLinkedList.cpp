@@ -68,32 +68,31 @@ public:
 
 
 
-class Solution {
-public:
-    ListNode* oddEvenList(ListNode* head) {
-        if(head==NULL || head->next==NULL) return head;
-        ListNode* head1=head;
-        ListNode* head2=head->next;
+ListNode* oddEvenList(ListNode* head) {
+    if (!head) return NULL;  // Handle empty list case
 
-        ListNode* temp=head->next->next;
-        int c=2;
+    ListNode* odd = new ListNode(0);  // Placeholder for odd nodes
+    ListNode* temp1 = odd;             // Pointer to build odd list
 
-        ListNode* curr1=head1;
-        ListNode* curr2=head2;
-        while(temp!=NULL){
-            c++;
-            if(c%2==1) {
-                curr1->next=temp;
-                curr1=temp;
-            }
-            else {
-                curr2->next=temp;
-                curr2=temp;
-            }
-            temp=temp->next;
+    ListNode* even = new ListNode(0); // Placeholder for even nodes
+    ListNode* temp2 = even;            // Pointer to build even list
+
+    int index = 1; // Index to track odd/even position
+    while (head) {
+        if (index % 2 != 0) { // Odd index
+            temp1->next = head;
+            temp1 = temp1->next;
+        } else { // Even index
+            temp2->next = head;
+            temp2 = temp2->next;
         }
-        curr1->next=head2;
-        curr2->next = nullptr; // terminate the even list
-        return head1;
+        head = head->next;
+        index++;
     }
-};
+
+    // Connect odd list to even list
+    temp1->next = even->next; // Point last odd to first even
+    temp2->next = nullptr;     // End the even list
+
+    return odd->next;          // Return the new head of odd list
+}

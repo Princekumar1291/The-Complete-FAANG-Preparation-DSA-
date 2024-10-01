@@ -44,39 +44,44 @@ public:
 
 
 
-class Solution
-{
+class Solution{
     public:
-    //Function to sort a linked list of 0s, 1s and 2s.
     Node* segregate(Node *head) {
-        if(head==NULL || head->next==NULL) return head;
-        Node* zeros=new Node(-1);
-        Node* ones=new Node(-1);
-        Node* twos=new Node(-1);
+        if(head == NULL || head->next == NULL) return head;
+        Node* zeros = new Node(-1);
+        Node* ones = new Node(-1);
+        Node* twos = new Node(-1);
         
-        Node* temp1=zeros;
-        Node* temp2=ones;
-        Node* temp3=twos;
+        Node* temp0 = zeros;
+        Node* temp1 = ones;
+        Node* temp2 = twos;
         
-        Node* temp=head;
-        while(temp!=NULL){
-            if(temp->data==0) {
-                temp1->next=temp;
-                temp1=temp1->next;
+        Node* temp = head;
+        while(temp != NULL) {
+            if(temp->data == 0) {
+                temp0->next = temp;
+                temp0 = temp0->next;
             }
-            else if(temp->data==1){
-                temp2->next=temp;
-                temp2=temp2->next;
+            else if(temp->data == 1) {
+                temp1->next = temp;
+                temp1 = temp1->next;
             }
-            else{
-                temp3->next=temp;
-                temp3=temp3->next;
+            else {
+                temp2->next = temp;
+                temp2 = temp2->next;
             }
-            temp=temp->next;
+            temp = temp->next;
         }
-        temp3->next=NULL;
-        ones->next!=NULL ? temp1->next=ones->next : temp1->next=twos->next;
-        if (ones->next != NULL) temp2->next=twos->next;
+        temp0->next=NULL;
+        temp1->next=NULL;
+        temp2->next=NULL;
+        
+        if(ones->next!=NULL){
+            temp1->next=twos->next;
+            temp0->next=ones->next;
+            return zeros->next;
+        }
+        temp0->next=twos->next;
         return zeros->next;
     }
 };

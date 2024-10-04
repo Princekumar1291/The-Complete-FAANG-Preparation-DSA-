@@ -1,11 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
-void f(int n){
+void f(int n){ //backtracking
   if(n==0) return;
   f(n-1);
   cout<<n<<" ";
 }
-void f2(int n){
+void f2(int n){  
   if(n==0) return ;
   cout<<n<<" ";
   f2(n-1);

@@ -1,31 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
-class Node{
-  public:
-  int val;
-  Node* next;
-  Node(int val){
-    this->val=val;
-    next=NULL;
+void printSubSumK(vector<int>& v,vector<int>& temp,int sum,int target,int i,int n,bool& check){
+  if(i==n){
+    if(sum==target){
+      for(int ele:temp)cout<<ele<<" ";cout<<endl;
+      check=false;
+    }
+    return;
   }
-};
-void display(Node* head){
-  while(head!=NULL) {
-    cout<<head->val<<" ";
-    head=head->next;
-  }cout<<endl;
+  temp.push_back(v[i]);
+  if(check)printSubSumK(v,temp,sum+v[i],target,i+1,n,check);
+  temp.pop_back();
+  if(check)printSubSumK(v,temp,sum,target,i+1,n,check);
 }
 int main(){
-  int arr[]={1,2,13,4,55};
-  int n=sizeof(arr)/sizeof(arr[0]);
-  Node* head=new Node(arr[0]);
-  Node* temp=head;
-  for(int i=1;i<n;i++){
-    Node* newNode=new Node(arr[i]);
-    temp->next=newNode;
-    temp=temp->next;
-  }
-
-  display(head);
+  vector<int> v={1,2,3,4,2};
+  vector<int> temp;
+  int i=0;
+  int n=v.size();
+  int target=5;
+  int sum=0;
+  bool check=true;
+  printSubSumK(v,temp,sum,target,i,n,check);
   return 0;
 }

@@ -7,7 +7,7 @@ using namespace std;    // Use the standard namespace to avoid prefixing std::
 // Main function
 int main() {
     // Initialize a bitset of size 8 with the integer 42 (binary: 00101010)
-    bitset<8> b1(42);
+    bitset<8> b1(7);
 
     // Initialize another bitset of size 8 with a binary string "101010"
     bitset<8> b2("101010");
@@ -16,7 +16,7 @@ int main() {
     cout << "Initial bitset: " << b1 << endl;
 
     // Access and print the 3rd bit of b1 (indexing starts from 0)
-    cout << "3rd bit: " << b1[3] << endl;
+    cout << "3rd bit: " << b1[3]<< endl;
 
     // Set the 5th bit of b1 to 1
     b1.set(5);

@@ -1,3 +1,6 @@
+//Problem Link: https://www.geeksforgeeks.org/problems/next-larger-element-1587115620/1
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -5,8 +8,6 @@ vector<long long> nextLargerElement(vector<long long> arr, int n){
   // Your code here
   stack<long long> st;
   vector<long long> ans(n);
-  st.push(arr[n-1]);
-  ans[n-1]=-1;
   for(int i=n-2;i>=0;i--){
       while(!st.empty() && st.top()<=arr[i]){
           st.pop();

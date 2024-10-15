@@ -21,21 +21,25 @@ vector<int> canSeePersonsCount(vector<int>& heights) {
 
 
 vector<int> canSeePersonsCount(vector<int>& heights) {
+  //next greater element concept
   int n=heights.size();
-  vector<int> ans(n);
   stack<int> st;
-  st.push(heights[n-1]);
+  vector<int> ans(n);
   ans[n-1]=0;
-
+  st.push(heights[n-1]);
   for(int i=n-2;i>=0;i--){
-    int c=0;
-    while(!st.empty() && st.top()<=heights[i]){
-      st.pop();
-      c++;
-    }
-    if(!st.empty()) c++;
-    ans[i]=c;
-    st.push(heights[i]);
+      int c=0;
+      while(!st.empty() && st.top()<heights[i]){
+          st.pop();
+          c++;
+      }
+      if(st.empty()){
+          ans[i]=c;
+      }
+      else{
+          ans[i]=c+1;
+      }
+      st.push(heights[i]);
   }
   return ans;
 }

@@ -5,10 +5,8 @@ vector<int> previousSmallerEle(vector<int> v){
   int n=v.size();
   vector<int> ans(n);
   stack<int> st;
-  ans[0]=-1;
-  st.push(v[0]);
 
-  for(int i=1;i<n;i++){
+  for(int i=0;i<n;i++){
     while(!st.empty() && st.top()>=v[i]){
       st.pop();
     }
@@ -29,3 +27,4 @@ int main(){
   cout<<endl;
   return 0;
 }
+//-1 -1 -1 60 -1 60 75 

@@ -4,41 +4,24 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int trap(vector<int>& heights) {
-  int n=heights.size();
-  vector<int> next(n);
-
-  int maxi=0;
-  for(int i=n-1;i>=0;i--){
-      next[i]=maxi;
-      maxi=max(maxi,heights[i]);
-  }
-
-  vector<int> prev(n);
-  maxi=0;
-  for(int i=0;i<n;i++){
-      prev[i]=maxi;
-      maxi=max(maxi,heights[i]);
-  }
-
-  vector<int> mnm(n);
-  for(int i=0;i<n;i++){
-      mnm[i]=min(prev[i],next[i]);
-  }
-
-  vector<int> ans(n);
-  for(int i=0;i<n;i++){
-      int temp=mnm[i]-heights[i];
-      if(temp<=0) ans[i]=0;
-      else ans[i]=temp;
-  }
-
-  int sum=0;
-  for(int i=0;i<n;i++){
-      sum+=ans[i];
-  }
-
-  return sum;
+int trap(vector<int>& height) {
+    int n=height.size();
+    int ans=0;
+    vector<int> next(n);
+    vector<int> prev(n);
+    prev[0]=height[0];
+    next[n-1]=height[n-1];
+    for(int i=1;i<n;i++){
+        prev[i]=max(prev[i-1],height[i]);
+    }
+    for(int i=n-2;i>=0;i--){
+        next[i]=max(next[i+1],height[i]);
+    }
+    for(int i=0;i<n;i++){
+        int diff=min(prev[i],next[i])-height[i];
+        if(diff>0) ans+=diff;
+    }
+    return ans;        
 }
 
 

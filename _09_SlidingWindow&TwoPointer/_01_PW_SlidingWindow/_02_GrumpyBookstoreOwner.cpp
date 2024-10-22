@@ -1,5 +1,30 @@
 // Problem Link: https://leetcode.com/problems/grumpy-bookstore-owner/description/
 
+
+//Brute Force
+class Solution {
+public:
+    int maxSatisfied(vector<int>& c, vector<int>& g, int t) {
+        int n=g.size();
+        int sum=0;
+        int ans=0;
+        for(int i=0;i<n;i++) if(g[i]==0) sum+=c[i];
+        ans=sum;
+        for(int i=0;i<=n-t;i++){
+            int temp=sum;
+            for(int j=i;j<i+t;j++){
+                if(g[j]==1) temp+=c[j];
+            }
+            if(temp>ans) ans=temp;
+        }
+        return ans;
+    }
+};
+
+
+
+
+//Sliding Window
 class Solution {
 public:
     int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {
@@ -37,6 +62,26 @@ public:
             else{
                 if(grumpy[i]==0) ans+=customers[i];
             }
+        }
+        return ans;
+    }
+};
+
+
+//best
+class Solution {
+public:
+    int maxSatisfied(vector<int>& c, vector<int>& g, int t) {
+        int n=g.size();
+        int sum=0;
+        int ans=0;
+        for(int i=0;i<n;i++) if(g[i]==0) sum+=c[i];
+        for(int i=0;i<t;i++) if(g[i]==1) sum+=c[i];
+        ans=sum;
+        for(int i=t;i<n;i++){
+            if(g[i]==1) sum+=c[i];
+            if(g[i-t]==1) sum-=c[i-t];
+            if(sum>ans) ans=sum;
         }
         return ans;
     }

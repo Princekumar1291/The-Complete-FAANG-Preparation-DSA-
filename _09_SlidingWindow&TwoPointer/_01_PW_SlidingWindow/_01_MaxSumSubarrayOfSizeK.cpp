@@ -10,17 +10,12 @@ using namespace std;
 class Solution{   
 public:
     long maximumSumSubarray(int K, vector<int> &Arr , int N){
-        // code here 
         if(K>N) return 0;
-        long long sum=0;
-        int i;
-        for(i=0;i<K;i++){
-            sum+=Arr[i];
-        }
-        long long ans=sum;
-        int t=i-K;
-        for(int j=i;j<N;j++){
-            sum=sum-Arr[t++]+Arr[j];
+        long sum=0;
+        for(int i=0;i<K;i++) sum+=Arr[i]; 
+        long ans=sum;
+        for(int i=K;i<N;i++){
+            sum=sum+Arr[i]-Arr[i-K];
             ans=max(ans,sum);
         }
         return ans;

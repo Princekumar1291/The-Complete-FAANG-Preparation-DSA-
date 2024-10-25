@@ -21,22 +21,19 @@ vector<long long> printFirstNegativeInteger(long long int arr[],long long int n,
 }
 
 //sliding window
-vector<int> printFirstNegativeInteger2(vector<int> v,int N, int K) {
-    queue<int> q;
-    vector<int> ans;
-    for(int i=0;i<N;i++) if(v[i]<0) q.push(i);
+vector<long long> printFirstNegativeInteger(long long int A[],long long int N, long long int K) {
+    queue<long long> q;
+    vector<long long> ans;
+    for(int i=0;i<N;i++) if(A[i]<0) q.push(i);
     for(int i=K-1;i<N;i++){
-        if(q.empty()){
-            ans.push_back(0);
-        }
-        else if(q.front()>=i-K+1 && q.front()<=i){
-            ans.push_back(v[q.front()]);
+        if(!q.empty() && q.front()>=i-K+1 && q.front()<=i){
+            ans.push_back(A[q.front()]);
         }
         else ans.push_back(0);
         if(!q.empty() && q.front()==i-K+1) q.pop();
     }
     return ans;
- }
+}
 
 
 

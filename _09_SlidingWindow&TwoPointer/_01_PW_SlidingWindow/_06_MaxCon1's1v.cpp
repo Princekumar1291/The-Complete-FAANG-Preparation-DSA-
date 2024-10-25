@@ -5,33 +5,22 @@ using namespace std;
 
 int longestSubarray(vector<int>& nums) {
     int n=nums.size();
-    int ans=0;
     int i=0,j=0;
-    int sum=0;
-    int k=1;
-    bool check=true;
+    int ans=0;
+    int c=0;
     while(i<n){
-        if(nums[i]==1){
-            sum++;
-        }
-        else if(k>0){
-            k--;
-            check=false;
-        }
-        else {
-            ans=max(ans,sum);
-            while(nums[j]==1){
-                sum--;
+        if(nums[i]==0) c++;
+        if(c<=1) ans=max(ans,i-j);
+        while(c>1){
+            if(nums[j]==1) j++;
+            else{
                 j++;
+                c--;
             }
-            j++;
-            check=false;
         }
         i++;
-    }ans=max(ans,sum);
-    
-    
-    return check ? ans-1 : ans;
+    }
+    return ans;
 }
 
 

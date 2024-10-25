@@ -15,7 +15,7 @@ int numSubarrayProductLessThanK(vector<int>& nums, int k) {
             pro/=nums[i];
             i++;
         }
-        ans+=(j-i+1);
+        ans+=(j-i+1);    //start with i and end with j
         j++;
     }
     return ans;

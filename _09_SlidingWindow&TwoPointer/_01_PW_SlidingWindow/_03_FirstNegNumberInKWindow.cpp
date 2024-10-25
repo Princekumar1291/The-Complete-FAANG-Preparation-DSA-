@@ -21,7 +21,7 @@ vector<long long> printFirstNegativeInteger(long long int arr[],long long int n,
 }
 
 //sliding window
-vector<long long> printFirstNegativeInteger(long long int A[],long long int N, long long int K) {
+vector<long long> printFirstNegativeInteger2(long long int A[],long long int N, long long int K) {
     queue<long long> q;
     vector<long long> ans;
     for(int i=0;i<N;i++) if(A[i]<0) q.push(i);
@@ -40,9 +40,9 @@ vector<long long> printFirstNegativeInteger(long long int A[],long long int N, l
 
 int main(){
   int n=9,k=4;
-  vector<int> v={2,-3,4,4,-7,-1,4,-2,6};
-  vector<int> ans=printFirstNegativeInteger2(v,n,k);
-  for(int i=0;i<ans.size();i++) cout<<ans[i]<<" "; 
+  long long int arr[]={12, -1, -7, 8, -15, 30, 16, 28, -3};
+  vector<long long> ans=printFirstNegativeInteger2(arr,n,k);
+  for(auto it:ans) cout<<it<<" ";
   return 0;
 }
 

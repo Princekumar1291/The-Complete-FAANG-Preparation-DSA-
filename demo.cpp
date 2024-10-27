@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
-class MinHeap{
+class MaxHeap{
   public:
   vector<int> arr;
   int i;
-  MinHeap(){
+  MaxHeap(){
     arr=vector<int>(1000);
     i=1;
   }
@@ -13,7 +13,7 @@ class MinHeap{
     int curr=i;
     i++;
     while(curr>1){
-      if(arr[curr]<arr[curr/2]){
+      if(arr[curr]>arr[curr/2]){
         swap(arr[curr],arr[curr/2]);
         curr=curr/2;
       }
@@ -35,11 +35,11 @@ class MinHeap{
     while(curr*2<i){
       int l=2*curr;
       int r=l+1;
-      if(r<i && arr[r]<arr[l] && arr[r]<arr[curr]){
+      if(r<i && arr[r]>arr[l] && arr[r]>arr[curr]){
         swap(arr[curr],arr[r]);
         curr=r;
       }
-      else if(arr[l]<arr[curr]){
+      else if(arr[l]>arr[curr]){
         swap(arr[curr],arr[l]);
         curr=l;
       }
@@ -51,7 +51,7 @@ class MinHeap{
   }
 };
 int main(){
-  MinHeap mhp;
+  MaxHeap mhp;
   mhp.push(10);
   mhp.push(20);
   mhp.push(3);

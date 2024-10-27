@@ -2,95 +2,71 @@
 using namespace std;
 class MaxHeap{
   public:
+  vector<int> arr;
   int i;
-  vector<int> v;
   MaxHeap(){
+    arr=vector<int>(1000);
     i=1;
-    v=vector<int>(1000);
-  }
-  int size(){
-    return i-1;
-  }
-  int top(){
-    if(i==1){
-      cout<<"Heap is empty ";
-      return -1;
-    }
-    return v[1];
   }
   void push(int val){
-    v[i]=val;
+    arr[i]=val;
     int curr=i;
+    i++;
     while(curr>1){
-      if(v[curr]>v[curr/2]){
-        swap(v[curr],v[curr/2]);
+      if(arr[curr]>arr[curr/2]){
+        swap(arr[curr],arr[curr/2]);
         curr=curr/2;
       }
       else break;
     }
-    i++;
   }
-
+  int top(){
+    if(i==1) return -1;
+    return arr[1];
+  }
   void pop(){
     if(i==1){
-      cout<<"Heap is empty";
-      return ;
+      cout<<"Heap empty";
+      return;
     }
-    v[1]=v[i-1];
+    arr[1]=arr[i-1];
     i--;
     int curr=1;
-    while(curr<i){
+    while(curr*2<i){
       int l=2*curr;
-      int r=2*curr+1;
-      if(l<i && v[curr]<v[l]){
-        if(r<i && v[r]>v[l]){
-          swap(v[curr],v[r]);
-          curr=r;
-        }
-        else{
-          swap(v[curr],v[l]);
-          curr=l;
-        }
+      int r=l+1;
+      if(r<i && arr[r]>arr[l] && arr[r]>arr[curr]){
+        swap(arr[curr],arr[r]);
+        curr=r;
       }
-      else if(r<i && v[curr]<v[r]){
-        if(v[l]>v[r]){
-          swap(v[curr],v[l]);
-          curr=l;
-        }
-        else{
-          swap(v[curr],v[r]);
-          curr=r;
-        }
+      else if(arr[l]>arr[curr]){
+        swap(arr[curr],arr[l]);
+        curr=l;
       }
       else break;
-    } 
+    }
+  }
+  int size(){
+    return i-1;
   }
 };
-
-
 int main(){
-  MaxHeap mh;
-  mh.push(10);
-  mh.push(5);
-  mh.push(12);
-  mh.push(20);
-  mh.push(25);
-  mh.push(30);
-  mh.push(1);
-
-  cout<<mh.top()<<endl;
-  mh.pop();
-  cout<<mh.top()<<endl;
-  mh.pop();
-  cout<<mh.top()<<endl;
-  mh.pop();
-  cout<<mh.top()<<endl;
-  mh.pop();
-  cout<<mh.top()<<endl;
-  mh.pop();
-  cout<<mh.top()<<endl;
-  mh.pop();
-  cout<<mh.top()<<endl;
-
+  MaxHeap mhp;
+  mhp.push(10);
+  mhp.push(20);
+  mhp.push(3);
+  mhp.push(90);
+  mhp.push(0);
+  cout<<mhp.top()<<endl;
+  mhp.pop();
+  cout<<mhp.top()<<endl;
+  mhp.pop();
+  cout<<mhp.top()<<endl;
+  mhp.pop();
+  cout<<mhp.top()<<endl;
+  mhp.pop();
+  cout<<mhp.top()<<endl;
+  mhp.pop();
+  cout<<mhp.top()<<endl;
   return 0;
 }

@@ -1,3 +1,13 @@
+//push_back();
+//pop_back();
+//v.front();
+//v.back();
+//v.clear();
+//v.erase(v.begin()+1);
+//v.insert(v.begin())    insert 100 at the start and shift all element
+//v.empty()<<endl;       vector is empty or not
+
+
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
@@ -5,11 +15,6 @@ int main(){
     v.push_back(10);
     v.push_back(20);
     v.push_back(30);
-    v.emplace_back(40);
-    v.emplace_back(50);
-    v.emplace_back(60);
-    v.emplace_back(70);
-    v.emplace_back(80);
 
     vector<int> v1(5); //5 size vector with all value is 0 or garbage value
 

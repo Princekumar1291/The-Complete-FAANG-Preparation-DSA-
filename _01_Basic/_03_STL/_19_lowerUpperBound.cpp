@@ -108,3 +108,12 @@ int main()
 
 	cout << endl;
 }
+
+
+//vector<int> v = {1, 2, 4, 4, 6, 8, 10};
+
+// auto lb = lower_bound(v.begin(), v.end(), 4); // First element >= 4
+// auto ub = upper_bound(v.begin(), v.end(), 4); // First element > 4
+
+// cout << "Lower bound: " << *lb << std::endl; // 4
+// cout << "Upper bound: " << *ub << std::endl; // 6

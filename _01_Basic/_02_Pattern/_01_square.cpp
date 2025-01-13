@@ -15,3 +15,8 @@ int main(){
     }
     return 0;
 }
+
+
+//rules
+// for the outer loop count the number of lines
+// for inner loop focus on the colums & connect them somehow to the row

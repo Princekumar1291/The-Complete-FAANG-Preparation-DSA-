@@ -1,3 +1,10 @@
+//st.push(10);
+//st.pop();
+//st.top();
+//st.size();
+//st.empty();
+
+
 #include<bits/stdc++.h>
 using namespace std;
 int main(){

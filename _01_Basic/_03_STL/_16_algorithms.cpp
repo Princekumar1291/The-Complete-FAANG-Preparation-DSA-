@@ -19,7 +19,16 @@ int main(){
     for(auto ele:v) cout<<ele<<" ";cout<<endl;
 
 
-    //return no of set bits
+    //for pair vector with comparator 
+    vector<pair<int,int>> v2={{1,2},{2,1},{4,1},{2,5}};
+    sort(v2.begin(),v2.end(),[](pair<int,int> p1,pair<int,int> p2){
+      if(p1.first==p2.first)return p1.second>p2.second;
+      return p1.first<p2.first;
+      }
+    );
+
+
+    //return no of set bits(numbers of 1)
     int num=7;
     int ppk=__builtin_popcount(num);
     cout <<ppk<<endl;
@@ -28,7 +37,10 @@ int main(){
     int ppk2=__builtin_popcountll(num2);
     cout <<ppk2<<endl;
 
-    //next permutation
+    //next permutation (to print all permutation strings should be sorted) 
+    //Return Value:
+      // true if the next permutation exists (the sequence was rearranged to a higher permutation).
+      // false if the sequence is already the highest permutation and has been reset to the lowest permutation.
     string s="123";
     do{
       cout<<s<<" ";

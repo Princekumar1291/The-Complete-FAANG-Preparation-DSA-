@@ -1,3 +1,9 @@
+//st.insert(10);
+//st.find(10); //point to the value 10 if exit else return st.end()
+//st.erase(10); //delete 10 if exit
+//st.count(10); //if exit return 1 else 0
+
+
 #include<bits/stdc++.h>
 using namespace std;
 int main(){

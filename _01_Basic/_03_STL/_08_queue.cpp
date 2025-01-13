@@ -1,3 +1,10 @@
+//q.push(10);
+//q.back();
+//q.front();
+//q.pop();
+//q.empty();
+
+
 #include<bits/stdc++.h>
 using namespace std;
 int main(){

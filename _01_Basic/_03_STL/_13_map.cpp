@@ -2,6 +2,11 @@
 using namespace std;
 int main(){
     map<int,int> mp;  //store unique keys in sorted order
+    map<int,pair<int,int>> mp2;
+    map<pair<int,int>,int> mp3;
+    mp2[1]={1,2};
+    mp3[{1,2}]=10;
+    
     mp[1]=10;
     mp.insert({3,45});
     mp.insert({3,50});  //not inserted

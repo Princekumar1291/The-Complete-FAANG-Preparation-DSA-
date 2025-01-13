@@ -1,3 +1,7 @@
+//extra from vector 
+//l.push_front()
+
+
 #include<bits/stdc++.h>
 using namespace std;
 int main(){

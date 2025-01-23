@@ -1,3 +1,5 @@
+//Problem Link: https://leetcode.com/problems/3sum/description/
+
 #include <bits/stdc++.h>
 using namespace std;
 vector<vector<int>> tripletBrut(int n, vector<int> &arr) {

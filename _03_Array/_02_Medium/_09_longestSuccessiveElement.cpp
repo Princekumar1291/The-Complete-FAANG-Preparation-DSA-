@@ -25,3 +25,27 @@ public:
         return ans;
     }
 };
+
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        int n=nums.size();
+        unordered_set<int> st;
+        for(int ele:nums) st.insert(ele);
+        int ans=0;
+        for(int ele:st){
+            if(st.find(ele-1)!=st.end()) continue;
+            else{
+                int c=1;
+                int currEle=ele;
+                while(st.find(currEle+1)!=st.end()){
+                    c++;
+                    currEle++;
+                }
+                ans=max(c,ans);
+            }
+        }
+        return ans;
+    }
+};

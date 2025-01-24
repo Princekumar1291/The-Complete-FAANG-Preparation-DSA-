@@ -46,8 +46,8 @@ vector<int> searchRange(vector<int>& nums, int target) {
 
 
 vector<int> searchRange(vector<int>& nums, int target) {
-  int fl=lower_bound(nums.begin(),nums.end(),target)-nums.begin();
-  int cl=upper_bound(nums.begin(),nums.end(),target)-nums.begin();
+  int fl=lower_bound(nums.begin(),nums.end(),target)-nums.begin(); // Find first position
+  int cl=upper_bound(nums.begin(),nums.end(),target)-nums.begin(); // Find position after last
   if(fl==cl) return {-1,-1};
   return {fl,cl-1};
 }

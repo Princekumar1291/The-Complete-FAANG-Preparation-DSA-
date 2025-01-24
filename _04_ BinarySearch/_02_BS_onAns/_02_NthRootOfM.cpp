@@ -15,6 +15,7 @@ int NthRoot(int n, int m){
           ans*=mid;
           if(ans>m) break;
       }
+      
       if(ans==m) return mid;
       if(ans<m) {
           low=mid+1;

@@ -56,6 +56,7 @@
 // copy arr elements to linklist
 #include<bits/stdc++.h>
 using namespace std;
+
 class Node{  //linklist ka node
 public:
     int val;

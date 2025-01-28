@@ -23,6 +23,7 @@ public:
         }
         return true;
     }
+
     void helper(int n,vector<string> temp,vector<vector<string>>& ans,int col){
         if(col==n){
             ans.push_back(temp);
@@ -36,9 +37,10 @@ public:
             }
         }
     }
+
     vector<vector<string>> solveNQueens(int n) {
         string str(n,'.');
-        vector<string> temp(n,str);
+        vector<string> temp(n,str); 
         vector<vector<string>> ans;
         int col=0;
         helper(n,temp,ans,col);

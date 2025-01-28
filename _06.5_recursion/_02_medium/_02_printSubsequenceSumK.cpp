@@ -22,6 +22,3 @@ int main(){
   printSubSumK(v,temp,sum,target,i,n);
   return 0;
 }
-
-
-

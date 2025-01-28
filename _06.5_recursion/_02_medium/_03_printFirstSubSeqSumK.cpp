@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 using namespace std;
 void printFirstSubSumK(vector<int>& v,vector<int>& temp,int sum,int target,int i,int n,bool& check){

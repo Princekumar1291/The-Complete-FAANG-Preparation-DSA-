@@ -17,10 +17,7 @@ public:
         }
         while(head->data<tail->data){
             if(head->data+tail->data==target){
-                pair<int,int> p;
-                p.first=head->data;
-                p.second=tail->data;
-                v.push_back(p);
+                v.push_back({head->data,tail->data});
                 head=head->next;
                 tail=tail->prev;
             }

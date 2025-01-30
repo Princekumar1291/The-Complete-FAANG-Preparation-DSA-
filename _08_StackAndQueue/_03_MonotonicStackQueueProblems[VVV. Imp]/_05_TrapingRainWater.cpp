@@ -18,10 +18,9 @@ int trap(vector<int>& height) {
         next[i]=max(next[i+1],height[i]);
     }
     for(int i=0;i<n;i++){
-        int diff=min(prev[i],next[i])-height[i];
-        if(diff>0) ans+=diff;
+        ans+=min(prev[i],next[i])-height[i];
     }
-    return ans;        
+    return ans;
 }
 
 

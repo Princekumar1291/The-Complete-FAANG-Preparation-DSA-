@@ -42,6 +42,7 @@ int bestClosingTime(string cst) {
 
 
 int main(){
-  
-  return 0;
+    string customers = "YYNY";
+    cout << "Best closing time: " << bestClosingTime(customers) << endl;
+    return 0;
 }

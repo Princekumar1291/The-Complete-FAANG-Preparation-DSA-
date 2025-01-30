@@ -69,8 +69,9 @@ int main(){
   stack<char> op;
   for(int i=0;i<n;i++){
     if(isdigit(s[i])){
-      string temp="";
-      temp+=s[i];
+      // string temp="";
+      // temp+=s[i];
+      string temp(1,s[i]);
       val.push(temp);
     }
     else{

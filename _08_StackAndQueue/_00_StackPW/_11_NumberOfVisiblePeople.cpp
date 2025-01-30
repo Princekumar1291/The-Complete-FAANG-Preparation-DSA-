@@ -37,7 +37,7 @@ vector<int> canSeePersonsCount(vector<int>& heights) {
           ans[i]=c;
       }
       else{
-          ans[i]=c+1;
+          ans[i]=c+1;  
       }
       st.push(heights[i]);
   }

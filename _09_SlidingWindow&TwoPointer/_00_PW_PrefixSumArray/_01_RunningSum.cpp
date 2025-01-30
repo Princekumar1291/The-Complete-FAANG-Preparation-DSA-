@@ -1,4 +1,4 @@
-//Problem Link: https://leetcode.com/problems/running-sum-of-1d-array/submissions/1301484465/
+//Problem Link: https://leetcode.com/problems/running-sum-of-1d-array/description/
 
 #include<bits/stdc++.h>
 using namespace std;

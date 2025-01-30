@@ -42,19 +42,6 @@ void reverseStack(stack<int>& st){
   }
 }
 
-void pushAtBottom(stack<int>& st,int ele){
-  stack<int> temp;
-  while(!st.empty()){
-    temp.push(st.top());
-    st.pop();
-  }
-  st.push(ele);
-  while(!temp.empty()){
-    st.push(temp.top());
-    temp.pop();
-  }
-}
-
 void pushAtAnyIndex(stack<int>& st,int index,int ele){
   stack<int> temp;
   while(!st.empty()){
@@ -71,6 +58,19 @@ void pushAtAnyIndex(stack<int>& st,int index,int ele){
     c++;
   }
   if(c==index) st.push(ele);
+}
+
+void pushAtBottom(stack<int>& st,int ele){
+  stack<int> temp;
+  while(!st.empty()){
+    temp.push(st.top());
+    st.pop();
+  }
+  st.push(ele);
+  while(!temp.empty()){
+    st.push(temp.top());
+    temp.pop();
+  }
 }
 
 void reverseStackRec(stack<int>& st){

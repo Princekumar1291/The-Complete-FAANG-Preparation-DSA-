@@ -1,3 +1,5 @@
+// Problem Link: https://leetcode.com/problems/valid-parentheses/description/
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -12,7 +14,7 @@ bool isValid(string s) {
       if(st.empty()){
           return false;
       }
-      if(s[i]==')' &&st.top()=='('){
+      if(s[i]==')' && st.top()=='('){
           st.pop();
       }
       else if(s[i]=='}' &&st.top()=='{'){

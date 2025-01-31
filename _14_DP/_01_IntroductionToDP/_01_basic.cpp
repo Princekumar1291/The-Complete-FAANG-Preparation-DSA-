@@ -24,12 +24,14 @@
 
 #include<bits/stdc++.h>
 using namespace std;
+
 int fibo(int n,vector<int>& dp){
   if(n<=1) return n;
   if(dp[n]!=-1) return dp[n];
   else dp[n]=fibo(n-1,dp)+fibo(n-2,dp);
   return dp[n];
 }
+
 int tabular(int n,vector<int>& dp){
   if(n<=1) return n;
   dp[0]=0;
@@ -40,7 +42,7 @@ int tabular(int n,vector<int>& dp){
   return dp[n];
 }
 
-int newhelper(int n){
+int spaceOpt(int n){
   if(n<=1) return n;
   int prevprev=0;
   int prev=1;
@@ -53,6 +55,8 @@ int newhelper(int n){
   return ans;
 }
 
+
+
 int main(){
   cout<<"Enter a number: ";
   int n;
@@ -64,7 +68,7 @@ int main(){
   vector<int> dp(n+1,-1);
   // int ans=fibo(n,dp);
   // int ans=tabular(n,dp);
-  int ans=newhelper(n);
+  int ans=spaceOpt(n);
   cout<<ans;
   return 0;
 }

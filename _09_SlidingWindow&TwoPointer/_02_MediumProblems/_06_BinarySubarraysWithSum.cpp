@@ -1,4 +1,4 @@
-//Problem Link: https://leetcode.com/problems/count-number-of-nice-subarrays/submissions/1305324189/
+//Problem Link: https://leetcode.com/problems/count-number-of-nice-subarrays/description/
 
 
 #include<bits/stdc++.h>

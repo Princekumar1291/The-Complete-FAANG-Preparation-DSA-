@@ -1,4 +1,4 @@
-//Problem Link: https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
+//Problem Link: https://www.geeksforgeeks.org/problems/minimum-sum-partition3317/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
 
 
 

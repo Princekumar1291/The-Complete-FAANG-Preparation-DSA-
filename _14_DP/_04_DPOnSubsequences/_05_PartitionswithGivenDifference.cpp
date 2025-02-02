@@ -6,6 +6,36 @@ prblem Link: https://www.geeksforgeeks.org/problems/partitions-with-given-differ
 
 class Solution {
   public:
+    int helper(vector<int>& arr,int n,int target,vector<vector<int>>& dp){
+        if(target<0) return 0;
+        if(n<0){
+            if(target==0) return 1;
+            else return 0;
+        }
+        if(dp[n][target]!=-1) return dp[n][target];
+        int take=helper(arr,n-1,target-arr[n],dp);
+        int notTake=helper(arr,n-1,target,dp);
+        return dp[n][target]=take+notTake;
+    }
+    int countPartitions(vector<int>& arr, int d) {
+        int n=arr.size();
+        int totSum=0;
+        for(int ele:arr) totSum+=ele;
+        int ans=0;
+        int target=totSum+d;
+        if(target%2==1) return 0;
+        target/=2;
+        vector<vector<int>> dp(n,vector<int>(target+1,-1));
+        return helper(arr,n-1,target,dp);
+    }
+};
+
+
+
+
+
+class Solution {
+  public:
     int md=int(1e9+7);
     int helper(vector<int>& arr,int target,int i,vector<vector<int>>& dp){
         if(i==0){

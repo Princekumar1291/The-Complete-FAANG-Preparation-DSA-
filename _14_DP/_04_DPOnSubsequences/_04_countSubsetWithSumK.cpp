@@ -2,6 +2,34 @@
 
 
 
+
+
+
+class Solution {
+  public:
+    int helper(vector<int>& arr,int n,int target,vector<vector<int>>& dp){
+        if(target<0) return 0;
+        if (n < 0) {
+            if (target == 0) return 1;
+            return 0;
+        }
+        if(dp[n][target]!=-1) return dp[n][target];
+        int left=helper(arr,n-1,target-arr[n],dp);
+        int right=helper(arr,n-1,target,dp);
+        return dp[n][target]=left+right;
+    }
+    int perfectSum(vector<int>& arr, int target) {
+        int n=arr.size();
+        vector<vector<int>> dp(n,vector<int>(target+1,-1));
+        return helper(arr,n-1,target,dp);
+    }
+};
+
+
+
+
+
+
 #include <vector>
 using namespace std;
 

@@ -3,6 +3,30 @@
 
 
 
+class Solution {
+  public:
+    int md=-(int)1e9;
+    int helper(vector<int>& price,int n,int target,vector<vector<int>>& dp){
+        if(target<0) return md;
+        if(n<0){
+            if(target>=0) return 0;
+            else return md;
+        }
+        if(dp[n][target]!=-1) return dp[n][target];
+        int take=price[n]+helper(price,n,target-(n+1),dp);
+        int notTake=0+helper(price,n-1,target,dp);
+        return dp[n][target]=max(take,notTake);
+    }
+    int cutRod(vector<int> &price) {
+        int n=price.size();
+        vector<vector<int>> dp(n,vector<int>(n+1,-1));
+        return helper(price,n-1,n,dp);
+    }
+};
+
+
+
+
 
   public:
     int helper(int w,int price[],int i,vector<vector<int>>& dp){

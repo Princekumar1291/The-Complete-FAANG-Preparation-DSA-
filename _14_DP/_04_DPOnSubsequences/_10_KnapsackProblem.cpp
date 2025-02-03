@@ -5,6 +5,33 @@
 
 
 
+class Solution {
+  public:
+    // Function to return max value that can be put in knapsack of capacity.
+    int md=-(int)1e6;
+    int helper(vector<int>& val,vector<int>& wt,int cap,int n,vector<vector<int>>& dp){
+        if(cap<0) return md;
+        if(n<0){
+            if(cap>=0) return 0;
+            else return md;
+        }
+        if(dp[n][cap]!=-1) return dp[n][cap];
+        int take=val[n]+helper(val,wt,cap-wt[n],n-1,dp);
+        int notTake=0+helper(val,wt,cap,n-1,dp);
+        return dp[n][cap]=max(take,notTake);
+    }
+    int knapSack(int capacity, vector<int> &val, vector<int> &wt) {
+        int n=val.size();
+        vector<vector<int>> dp(n,vector<int>(capacity+1,-1));
+        return helper(val,wt,capacity,n-1,dp);
+    }
+};
+
+
+
+
+
+
 class Solution
 {
     public:

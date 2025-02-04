@@ -39,7 +39,7 @@ class Solution {
 #include <algorithm>
 #include <vector>
 
-class Solution {
+class Solution { 
 public:
     int longestCommonSubstrHelper(const string &s1, const string &s2, int i, int j, int count) {
         if (i < 0 || j < 0) {

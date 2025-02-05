@@ -22,38 +22,6 @@ class Solution {
 
 
 
-
-
-
-
-
-
-//opt memorization top-down
-
-//{ Driver Code Starts
-  class Solution {
-  public:
-  int f(vector<int>& height, int n,vector<int>&dp){
-      if(n==0) return 0;
-      if(dp[n]!=-1) return dp[n];
-      int fs=f(height,n-1,dp)+abs(height[n]-height[n-1]);
-      int ss=INT_MAX;
-      if(n>1){
-          ss=f(height,n-2,dp)+abs(height[n]-height[n-2]);
-      }
-      return dp[n]=min(fs,ss);
-  }
-    int minimumEnergy(vector<int>& height, int n) {
-        vector<int> dp(n+1,-1);
-        return f(height,n-1,dp);
-    }
-};
-
-
-
-
-
-
 //opt dp bottom-Up
 
 class Solution {

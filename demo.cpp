@@ -1,37 +1,61 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-class Solution {
-  public:
-    string longestCommonSubstr(string s1, string s2) {
-        int n = s1.size();
-        int m = s2.size();
-        vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
-        
-        int maxLength = 0, endIndex = 0;
-        
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= m; j++) {
-                if (s1[i - 1] == s2[j - 1]) {
-                    dp[i][j] = 1 + dp[i - 1][j - 1];
-                    if (dp[i][j] > maxLength) {
-                        maxLength = dp[i][j];
-                        endIndex = i; // Store end index of LCS in s1
-                    }
-                }
-            }
-        }
-        
-        // Extract substring from s1
-        if (maxLength == 0) return "";
-        return s1.substr(endIndex - maxLength, maxLength);
-    }
+struct Node{
+  int data;
+  Node* left,*right;
+  Node(int val){
+    data=val;
+    left=right=NULL;
+  }
 };
 
-int main() {
-    Solution sol;
-    string s1 = "abcde";
-    string s2 = "abfde";
-    cout << "Longest Common Substring: " << sol.longestCommonSubstr(s1, s2) << endl;
-    return 0;
+Node* root=NULL;
+
+void insert(int val){
+  Node* temp=new Node(val);
+  if(root==NULL){
+    root=temp;
+    return;
+  }
+  Node* curr=root,*par=NULL;
+  while(curr){
+    par=curr;
+    if(val<curr->data) curr=curr->left;
+    else curr=curr->right;
+  }
+  if(val<par->data) par->left=temp;
+  else par->right=temp;
+}
+
+void preOrder(Node* curr){
+  if(curr==NULL) return;
+  cout<<curr->data<<" ";
+  preOrder(curr->left);
+  preOrder(curr->right);
+}
+
+void levelOrderTrav(Node* root){
+    queue<Node*> q;
+    q.push(root);
+    while(!q.empty()){
+        Node* temp=q.front();
+        q.pop();
+        cout<<temp->data<<" ";
+        if(temp->left!=NULL) q.push(temp->left);
+        if(temp->right!=NULL) q.push(temp->right);
+    }
+}
+
+int main(){
+  insert(5);
+  insert(3);
+  insert(6);
+  insert(1);
+  insert(4);
+  preOrder(root);
+  cout<<endl;
+
+  levelOrderTrav(root);
+  return 0;
 }

@@ -28,3 +28,28 @@ int main(){
   
   return 0;
 }
+
+
+class Solution {
+public:
+    int level(TreeNode* root){
+        if(root==NULL) return 0;
+        int left=level(root->left);
+        int right=level(root->right);
+        return 1+max(left,right);
+    }
+    int dia(TreeNode* root){
+        if(root==NULL) return INT_MIN;
+        int leftLevel=level(root->left);
+        int rightLevel=level(root->right);
+        int totLR=leftLevel+rightLevel;
+
+        int left=dia(root->left);
+        int right=dia(root->right);
+
+        return max(totLR,max(left,right));
+    }
+    int diameterOfBinaryTree(TreeNode* root) {
+        return dia(root);
+    }
+};

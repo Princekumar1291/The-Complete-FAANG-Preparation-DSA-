@@ -15,11 +15,19 @@ class Node{
 
 void printNthLevel(Node* root,int l,int k){
   if(root==NULL) return ;
-  l++;
   if(l==k) cout<<root->val<<" ";
-  printNthLevel(root->left,l,k);
-  printNthLevel(root->right,l,k);
+  printNthLevel(root->left,l+1,k);
+  printNthLevel(root->right,l+1,k);
 }
+
+void printNthLevelReverse(Node* root,int l,int k){
+  if(root==NULL) return ;
+  if(l==k) cout<<root->val<<" ";
+  printNthLevel(root->right,l+1,k);
+  printNthLevel(root->left,l+1,k);
+}
+
+
 
 
 
@@ -45,7 +53,7 @@ int main(){
     //   / \   / \
     //  4   5 6   7
 
-  printNthLevel(a,0,3);
+  printNthLevel(a,1,3);
 
 
   return 0;

@@ -51,6 +51,20 @@ Node* treeFromArray(vector<int> v){
   return root;
 }
 
+void levelOrderTraversal(Node* root){
+  if(root==NULL) return ;
+  queue<Node*> q;
+  q.push(root);
+  while(!q.empty()){
+    Node* temp=q.front();
+    q.pop();
+    cout<<temp->val<<" ";
+    if(temp->left!=NULL) q.push(temp->left);
+    if(temp->right!=NULL) q.push(temp->right);
+  }
+  cout<<endl;
+}
+
 void print(Node* root){
   if(root==NULL) return ;
   cout<<root->val<<" ";
@@ -61,6 +75,6 @@ void print(Node* root){
 int main(){
   vector<int> v={1,2,3,4,5,INT_MIN,6,INT_MIN,INT_MIN,7,8,9,INT_MIN}; //level Order Traversal
   Node* root=treeFromArray(v);
-  print(root);
+  levelOrderTraversal(root);
   return 0;
 }

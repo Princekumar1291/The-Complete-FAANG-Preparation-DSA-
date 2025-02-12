@@ -66,6 +66,26 @@ vector<vector<int>> threeSum(vector<int>& v) {
     return ans;
 }
 
+
+
+bool hasTripletSum(vector<int> &arr, int target) {
+    // Your Code Here
+    int n=arr.size();
+    for(int i=0;i<n;i++){
+        int tar=target-arr[i];
+        int sum=0;
+        unordered_set<int> st;
+        for(int j=i+1;j<n;j++){
+            int req=tar-arr[j];
+            if(st.find(req)!=st.end()) return true;
+            st.insert(arr[j]);
+        }
+    }
+    return false;
+}
+
+
+
 int main()
 {
     vector<int> arr = { -1, 0, 1, 2, -1, -4};

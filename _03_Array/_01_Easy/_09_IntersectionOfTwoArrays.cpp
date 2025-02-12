@@ -26,13 +26,13 @@ vector<int> intersection(vector<int> v1,vector<int> v2){
   return v;
 }
 
-int NumberofElementsInIntersection(int a[], int b[], int n, int m){
-  sort(a, a + n);
-  sort(b, b + m);
+int NumberofElementsInIntersection(vector<int> a, vector<int> b){
+  sort(a.begin(), a.end());
+  sort(b.begin(), b.end());
   int count = 0;
   int i = 0;
   int j = 0;
-  while (i < n && j < m){
+  while (i < a.size() && j < b.size()){
     while (i > 0 && a[i] == a[i - 1]) i++;
     while (j > 0 && b[j] == b[j - 1]) j++;
     if (a[i] == b[j]){
@@ -46,13 +46,10 @@ int NumberofElementsInIntersection(int a[], int b[], int n, int m){
   return count;
 }
 int main(){
-  int a[] = {1, 2, 2, 3, 4};
-  int b[] = {2, 2, 3, 5};
+  vector<int> a = {1, 2, 2, 3, 4,4,4};
+  vector<int> b = {2, 2, 3, 5,4,5,5};
   
-  int n = sizeof(a) / sizeof(a[0]);
-  int m = sizeof(b) / sizeof(b[0]);
-  
-  int result = NumberofElementsInIntersection(a, b, n, m);
+  int result = NumberofElementsInIntersection(a, b);
   
   cout << "Number of elements in intersection: " << result << endl;
 

@@ -20,31 +20,25 @@ int subArrayBrut(vector<int> v,int target){
   return mxLength;
 }
 
-class Solution{
-    public:
-    int lenOfLongSubarr(int arr[],  int n, int k){
-        int maxLen=0;
-        int sum=0;
-        unordered_map<int,int> mp;
-        for(int i=0;i<n;i++){
-            sum+=arr[i];
-            if(sum==k) maxLen=i+1;
-            int diff=sum-k;
-            if(mp.find(diff)!=mp.end()){
-                maxLen=max(maxLen,i-mp[diff]);
-            }
-            if(mp.find(sum)==mp.end()) mp[sum]=i;
-        }
-        return maxLen;
-    } 
-
-};
+int longestSubarray(vector<int>& arr, int k) {
+  int n=arr.size();
+  unordered_map<int,int> mp;
+  mp.insert({0,-1});
+  int ans=0;
+  int sum=0;
+  for(int i=0;i<n;i++){
+      sum+=arr[i];
+      if(mp.find(sum-k)!=mp.end()) ans=max(ans,i-mp[sum-k]);
+      if(mp.find(sum)==mp.end()) mp.insert({sum,i});
+  }
+  return ans;
+}
 
 
 
 int main(){
   vector<int> nums {9,9,4,1,3,5,3,0,-3};
-  int mxlength=lenOfLongSubarr(nums,9);
+  int mxlength=longestSubarray(nums,9);
   cout<<"Max Length is: "<<mxlength;
   return 0;
 }

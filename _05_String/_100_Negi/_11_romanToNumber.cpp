@@ -25,6 +25,7 @@ int romanToDecimal(string &str) {
 }
 
 int main(){
-  
+  string str="MCMXCIV";
+  cout<<romanToDecimal(str);
   return 0;
 }

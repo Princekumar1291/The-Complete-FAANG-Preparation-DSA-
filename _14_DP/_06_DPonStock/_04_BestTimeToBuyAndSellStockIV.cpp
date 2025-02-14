@@ -23,3 +23,30 @@ public:
         return helper(prices,0,k,1,dp);
     }
 };
+
+
+
+
+class Solution {
+    public:
+        int helper(vector<int>& prices,int i,bool check,int c,vector<vector<vector<int>>>& dp,int k){
+            if(c>k) return 0;
+            if(i==prices.size()) return 0;
+            if(dp[i][check][c]!=-1) return dp[i][check][c];
+            if(check){
+                int sell=prices[i]+helper(prices,i+1,!check,c,dp,k);
+                int notSell=helper(prices,i+1,check,c,dp,k);
+                return dp[i][check][c]=max(sell,notSell);
+            }
+            else{
+                int buy=-prices[i]+helper(prices,i+1,!check,c+1,dp,k);
+                int notBuy=helper(prices,i+1,check,c,dp,k);
+                return dp[i][check][c]=max(buy,notBuy);
+            }
+        }
+        int maxProfit(int k, vector<int>& prices) {
+            int n=prices.size();
+            vector<vector<vector<int>>> dp(n+1,vector<vector<int>>(3,vector<int>(k+1,-1)));
+            return helper(prices,0,0,0,dp,k);
+        }
+    };

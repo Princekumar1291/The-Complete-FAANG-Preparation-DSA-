@@ -5,20 +5,36 @@
 
 class Solution {
 public:
-    int helper(vector<int>& nums,int i,int next,vector<vector<int>>& dp){
-        if(i==0){
-            if(nums[0]<next) return 1;
-            else return 0;
-        }
-        if(dp[i][next+10002]!=-1) return dp[i][next+10002];
-        int notTake=0+helper(nums,i-1,next,dp);
-        int take=0;
-        if(nums[i]<next) take=1+helper(nums,i-1,nums[i],dp);
-        return dp[i][next+10002]=max(take,notTake);
-    }
     int lengthOfLIS(vector<int>& nums) {
         int n=nums.size();
-        vector<vector<int>> dp(n,vector<int>(20006,-1));
-        return helper(nums,n-1,10001,dp);
+        vector<int> dp(n,1);
+        for(int i=0;i<n;i++){
+            for(int prev=0;prev<i;prev++){
+                if(nums[prev]<nums[i]) dp[i]=max(dp[prev]+1,dp[i]);
+            }
+        }
+        int ans=*max_element(dp.begin(),dp.end());
+        return ans;
     }
 };
+
+
+
+
+class Solution {
+    public:
+        int helper(vector<int>& nums,int i,int prevInd,vector<vector<int>>& dp){
+            if(i==nums.size()) return 0;
+            if(prevInd!=-1 && dp[i][prevInd]!=-1) return dp[i][prevInd];
+            int take=(prevInd==-1 || nums[prevInd] < nums[i]) ? 1+helper(nums,i+1,i,dp) : 0;
+            int notTake=helper(nums,i+1,prevInd,dp);
+            if(prevInd!=-1) return dp[i][prevInd]=max(take,notTake);
+            else return max(take,notTake);
+        }
+        int lengthOfLIS(vector<int>& nums) {
+            int n=nums.size();
+            vector<vector<int>> dp(n+1,vector<int>(n+1,-1));
+            int prevInd=-1;
+            return helper(nums,0,prevInd,dp);
+        }
+    };

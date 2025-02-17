@@ -5,21 +5,20 @@
 
 class Solution {
 public:
-    int helper(vector<int>& arr,int target,int i,vector<vector<int>>& dp){
-        if(i==0){
-            // if(target==0 && arr[0]==0) return 2;
-            if(target%arr[0]==0) return 1;
+    int helper(vector<int>& coins,int target,int n,vector<vector<int>>& dp{
+        if(target<0) return 0;
+        if(n<0){
+            if(target==0) return 1;
             else return 0;
         }
-        if(dp[i][target]!=-1) return dp[i][target];
-        int notTake=helper(arr,target,i-1,dp);
-        int take=0;
-        if(target>=arr[i]) take=helper(arr,target-arr[i],i,dp);
-        return dp[i][target]=take+notTake;
+        if(dp[n][target]!=-1) return dp[n][target];
+        int take=helper(coins,target-coins[n],n,dp);
+        int notTake=helper(coins,target,n-1,dp);
+        return dp[n][target]=take+notTake;
     }
-    int change(int amount, vector<int>& arr) {
-        int n=arr.size();
+    int change(int amount, vector<int>& coins) {
+        int n=coins.size();
         vector<vector<int>> dp(n,vector<int>(amount+1,-1));
-        return helper(arr,amount,n-1,dp);
+        return helper(coins,amount,n-1,dp);
     }
 };

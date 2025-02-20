@@ -10,7 +10,7 @@ class Solution {
       void fillLeft(Node* root,vector<int>& ans){
           Node* temp=root;
           while(temp->left!=NULL || temp->right!=NULL){
-              if(temp->left!=NULL || temp->right!=NULL) ans.push_back(temp->data);
+              ans.push_back(temp->data);
               if(temp->left!=NULL) temp=temp->left;
               else temp=temp->right;
           }

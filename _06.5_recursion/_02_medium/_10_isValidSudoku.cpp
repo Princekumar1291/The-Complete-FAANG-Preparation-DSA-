@@ -1,3 +1,7 @@
+// https://leetcode.com/problems/valid-sudoku/
+
+
+
 class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& board) {
@@ -31,3 +35,36 @@ public:
         return true;
     }
 };
+
+
+
+
+
+
+
+
+bool isValid(vector<vector<char>>& board,int i,int j,char k){
+    for(int t=0;t<9;t++){
+        if(board[i][t]==k) return false;
+        if(board[t][j]==k) return false;
+        if(board[3*(i/3)+t/3][3*(j/3)+t%3]==k) return false;
+    }
+    return true;
+}
+bool isValidSudoku(vector<vector<char>>& board){
+    for(int i=0;i<9;i++){
+        for(int j=0;j<9;j++){
+            if(board[i][j]=='.'){
+                for(char k='1';k<='9';k++){
+                    if(isValid(board,i,j,k)){
+                        board[i][j]=k;
+                        if (isValidSudoku(board)) return true;  // Recursively solve the rest
+                        else board[i][j] = '.';  // Backtrack if no solution is found
+                    }
+                }
+                return false;
+            }
+        }
+    }
+    return true;
+} 

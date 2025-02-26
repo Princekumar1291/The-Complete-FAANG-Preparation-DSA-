@@ -4,7 +4,7 @@
 using namespace std;
 void heapify(vector<int>& v,int i){
     int n=v.size();
-    while(i*2+1<n){
+    while(true){
         int l=2*i+1;
         int r=2*i+2;
         if(r<n && v[r]<v[l] && v[r]<v[i]){
@@ -26,6 +26,31 @@ void display(vector<int> v){
     cout<<endl;
 }
 
+void pop(vector<int>& v) {
+    int n = v.size();
+    if (n == 0) {
+        cout << "Heap is empty!" << endl;
+        return;
+    }
+    v[0] = v[n - 1]; // Move the last element to the root
+    v.pop_back();     // Remove the last element
+    heapify(v, 0);    // Reheapify from the root
+}
+
+void push(vector<int> arr,int val){
+    int n=arr.size();
+    arr.push_back(val);
+    int curr=n-1;
+    while(curr>0){
+      int par=(curr-1)/2;
+      if(arr[curr]<arr[par]){
+        swap(arr[curr],arr[par]);
+        curr=par;
+      }
+      else break;
+    }
+  }
+
 int main(){
     vector<int> v={140,112,30,34,50,12,7410,8052,940,41}; //12 34 30 112 41 140 7410 8052 940 50 
     int n=v.size();
@@ -33,6 +58,8 @@ int main(){
     for(int i=n/2;i>=0;i--){
         heapify(v,i);
     }
+    display(v);
+    pop(v);
     display(v);
     return 0;
 }

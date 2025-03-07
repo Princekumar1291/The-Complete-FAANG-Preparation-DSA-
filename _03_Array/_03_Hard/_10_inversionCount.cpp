@@ -1,3 +1,6 @@
+// https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -12,58 +15,38 @@ long long int inversionCount(long long arr[], long long n){   //O(n2)
 }
 
 
-void mergeSortedArray(long long arr[], long long start,long long end, long long mid,long long int &count){
-    vector<long long> tempArray;
-    
-    long long index1 = start;
-    long long index2 = mid+1;
-    
-    while(index1 <= mid && index2 <= end){
-      if(arr[index1] <= arr[index2]){
-          tempArray.push_back(arr[index1++]);
-      }
-      else{
-          tempArray.push_back(arr[index2++]);
-          count += mid + 1 - index1;
-      }
+class Solution {
+  public:
+    // Function to count inversions in the array.
+    void merge(vector<int>& arr,int low,int mid,int high,int& c){
+        int i=low;
+        int j=mid+1;
+        vector<int> temp;
+        while(i<=mid && j<=high){
+            if(arr[i]<=arr[j]) temp.push_back(arr[i++]);
+            else{
+                temp.push_back(arr[j++]);
+                c += mid- i +1;
+            } 
+        }
+        while(i<=mid) temp.push_back(arr[i++]);
+        while(j<=high) temp.push_back(arr[j++]);
+        for(int t=low;t<=high;t++){
+            arr[t]=temp[t-low];
+        }
     }
-    
-    while(index1 <= mid){
-      tempArray.push_back(arr[index1++]);
+    void mergesort(vector<int>& arr,int low,int high,int& c){
+        if(low>=high) return;
+        int mid=low+(high-low)/2;
+        mergesort(arr,low,mid,c);
+        mergesort(arr,mid+1,high,c);
+        merge(arr,low,mid,high,c);
     }
-    
-    while(index2 <= end){
-      tempArray.push_back(arr[index2++]);
+    int inversionCount(vector<int> &arr) {
+        int i=0;
+        int n=arr.size();
+        int c=0;
+        mergesort(arr,i,n-1,c);
+        return c;
     }
-    
-    for(int i = 0; i < tempArray.size() && start <= end; i++){
-      arr[start++] = tempArray[i];
-    }
-    return;
-}
-  
-// break drown and sorting the array
-void mergeSort(long long arr[], long long start, long long end, long long int &count){
-  if(start >= end) return ;
-  long long mid = start + (end - start) / 2;
-  mergeSort(arr, start, mid, count);
-  mergeSort(arr, mid+1, end, count);
-  mergeSortedArray(arr, start, end, mid, count);
-}
-    
-long long int inversionCount(long long arr[], long long N){
-    long long  start = 0;
-    long long end = N - 1;
-    long long int count = 0;
-    mergeSort(arr, start, end, count);
-    return count;
-}
-
-
-int main() {
-    long long arr[] = {5, 4, 3, 2, 1};
-    long long n = sizeof(arr) / sizeof(arr[0]);
-    cout << "Number of inversions: " << inversionCount(arr, n) << endl;
-
-    return 0;
-}
+};

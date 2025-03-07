@@ -26,27 +26,20 @@ int countPrimes(int n) {
 
 class Solution{
 public:
-    void sieveAlgo(vector<bool>& sieve, int n){
-        for(int i = 2; i * i <= n; i++){
-            if(sieve[i]){
-                for(int j = i * i; j <= n; j += i){
-                    sieve[j] = false;
+    void sieveAlgo(vector<int>& v,int n){
+        for(int i=2;i*i<=n;i++){
+            if(v[i]==1){
+                for(int j=i*i;j<=n;j=j+i){
+                    v[j]=0;
                 }
             }
         }
     }
-
     vector<int> sieveOfEratosthenes(int n){
         vector<int> ans;
-        vector<bool> sieve(n + 1, true);
-        sieve[0] = sieve[1] = false; // 0 and 1 are not prime
-
-        sieveAlgo(sieve, n);
-
-        for(int i = 2; i <= n; i++) {
-            if(sieve[i]) ans.push_back(i);
-        }
-
+        vector<int> sieve(n+1,1);
+        sieveAlgo(sieve,n);
+        for(int i=2;i<=n;i++) if(sieve[i]==1) ans.push_back(i);
         return ans;
     }
 };

@@ -1,3 +1,7 @@
+// https://leetcode.com/problems/unique-paths/description/
+
+
+
 //1) express on term of index (i,j)
 //2) Explore and do all stuff
 //3) sum of all ways/min/max of all stuff

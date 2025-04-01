@@ -1,3 +1,6 @@
+//https://takeuforward.org/graph/introduction-to-graph/
+
+
 // a graph is a collection of nodes where each node may poing to other node 
 //the node represent real life entity and relationship between the nodes/entities
 //mathematical defination of graphs--> graph is defined as a pair v,e

@@ -2,26 +2,34 @@
 
 
 class Solution {
-    public:
-    bool dfs(int node,vector<int>& vis,vector<int>& dirVis,vector<int> adj[]){
-        vis[node]=1;
-        dirVis[node]=1;
-        for(auto ele:adj[node]){
-            if(vis[ele]==0) {
-                bool temp=dfs(ele,vis,dirVis,adj);
-                if(temp==true) return true;
+public:
+    bool isLoop(vector<vector<int>>& adj,vector<int>& vis,vector<int>& dirVis,int start){
+        vis[start]=1;
+        dirVis[start]=1;
+        for(int ele:adj[start]){
+            if(vis[ele]==0){
+                vis[ele]=1;
+                bool temp=isLoop(adj,vis,dirVis,ele);
+                if(temp) return temp;
             }
             else if(dirVis[ele]==1) return true;
         }
-        dirVis[node]=0;
+        dirVis[start]=0;
         return false;
     }
-    bool isCyclic(int v, vector<int> adj[]) {
+    bool isCyclic(int v, vector<vector<int>> &edges) {
+        vector<vector<int>> adj(v,vector<int>());
+        for(auto arr:edges){
+            int ele1=arr[0];
+            int ele2=arr[1];
+            adj[ele1].push_back(ele2);
+        }
         vector<int> vis(v,0);
         vector<int> dirVis(v,0);
         for(int i=0;i<v;i++){
             if(vis[i]==0){
-                if(dfs(i,vis,dirVis,adj)==true) return true;
+                bool ans=isLoop(adj,vis,dirVis,i);   
+                if(ans==true) return true;
             }
         }
         return false;

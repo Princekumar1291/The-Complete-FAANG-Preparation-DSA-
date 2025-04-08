@@ -16,7 +16,7 @@ class Solution {
         vector<vector<int>>adjList (v,vector<int>());
         for(int i=0;i<v;i++){
             for(int j=0;j<v;j++){
-                if(adj[i][j]==1 && i!=j){
+                if(adj[i][j]==1 && i!=j){  //i!=j is for that should not selfloop
                     adjList[i].push_back(j);
                     adjList[j].push_back(i);
                 }

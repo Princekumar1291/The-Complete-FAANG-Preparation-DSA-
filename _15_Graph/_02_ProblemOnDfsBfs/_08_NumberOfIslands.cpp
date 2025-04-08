@@ -33,7 +33,6 @@ public:
             for(int j=0;j<m;j++){
                 if(vis[i][j]==0 && grid[i][j]=='1'){
                     ans++;
-                    cout<<i<<" "<<j<<"  ";
                     helper(i,j,vis,grid);
                 }
             }

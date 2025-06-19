@@ -47,7 +47,7 @@ class Solution {
     int minimizeCost(vector<int>& height, int n, int k) {
         vector<int> v(n,-1);
         return helper(height,n-1,k,v);
-    }
+    } 
 };
 
 
